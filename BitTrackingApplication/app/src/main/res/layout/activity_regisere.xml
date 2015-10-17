@@ -20,9 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/reg_email"
-        android:layout_marginTop="30px"
+        android:layout_marginTop="30dp"
         android:hint="example@mail.com"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:layout_width="match_parent"

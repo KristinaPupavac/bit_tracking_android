@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BitTrackingApplication</string>
+    <string name="reg_email"></string>
+    <string name="reg_name"></string>
+    <string name="reg_surname"></string>
+    <string name="reg_password"></string>
 </resources>

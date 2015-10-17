@@ -21,7 +21,8 @@
         android:layout_marginTop="30px"
         android:id="@+id/email"
         android:hint="example@mail.com"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/password"

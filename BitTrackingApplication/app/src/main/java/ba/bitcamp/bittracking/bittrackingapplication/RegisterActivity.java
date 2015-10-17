@@ -3,9 +3,13 @@ package ba.bitcamp.bittracking.bittrackingapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
 
 
 /**
@@ -18,6 +22,21 @@ public class RegisterActivity  extends AppCompatActivity {
 
     private EditText mEmail;
     private EditText mRegPassword;
+
+    public static List<User> users;
+
+
+    public static List<User> getUsers() {
+        return users;
+    }
+
+    public static void setUsers(List<User> users) {
+        RegisterActivity.users = users;
+    }
+
+    public static void addUser(User user){
+        RegisterActivity.users.add(user);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +60,13 @@ public class RegisterActivity  extends AppCompatActivity {
 
                 User user = new User(name, surname, mail, password);
 
-                BitTrackingActivity.users.add(user);
+                users.add(user);
 
-                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(RegisterActivity.this, HomeActivity.class);
+
+                Log.i(user.toString(), "user radi liiii");
+                startActivity(i);
 
             }
         });

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class BitTrackingActivity extends AppCompatActivity {
 
     private EditText mMail;
     private EditText mPassword;
-    public static List<User> users;
 
 
     @Override
@@ -36,11 +36,12 @@ public class BitTrackingActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               for (int i = 0; i < users.size(); i++) {
-                   if (users.get(i).getMail().equals(mMail.getText().toString()) & users.get(i).getPassword().equals(mPassword.getText().toString())) {
+               for (int i = 0; i < RegisterActivity.users.size(); i++) {
+                   if (RegisterActivity.users.get(i).getMail().equals(mMail.getText().toString()) & RegisterActivity.users.get(i).getPassword().equals(mPassword.getText().toString())) {
                        startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
                    } else {
-                        //TODO
+                       Toast.makeText(getApplicationContext(), "Wrong input!",
+                               Toast.LENGTH_SHORT).show();
                    }
                }
             }
