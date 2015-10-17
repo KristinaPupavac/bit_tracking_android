@@ -1,19 +1,23 @@
 package ba.bitcamp.bittracking.bittrackingapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+import java.util.List;
+
 
 public class BitTrackingActivity extends AppCompatActivity {
     private Button mLoginButton;
-    private Button mRegisterButton;
-    private EditText mName;
-    private EditText mSurname;
-    private EditText mPassword;
+    private Button mRegister;
+
     private EditText mMail;
+    private EditText mPassword;
+    public static List<User> users;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +25,10 @@ public class BitTrackingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mLoginButton = (Button) findViewById(R.id.loginbtn);
-        mRegisterButton = (Button) findViewById(R.id.register);
 
-        mName = (EditText) findViewById(R.id.name);
-        mSurname = (EditText) findViewById(R.id.surname);
+        mRegister = (Button) findViewById(R.id.register);
+
+
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
 
@@ -32,16 +36,24 @@ public class BitTrackingActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               for (int i = 0; i < users.size(); i++) {
+                   if (users.get(i).getMail().equals(mMail.getText().toString()) & users.get(i).getPassword().equals(mPassword.getText().toString())) {
+                       startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
+                   } else {
+                        //TODO
+                   }
+               }
             }
         });
 
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
             }
         });
+
+
 
 
 
