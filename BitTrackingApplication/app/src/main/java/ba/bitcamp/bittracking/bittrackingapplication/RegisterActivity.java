@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class RegisterActivity  extends AppCompatActivity {
     private EditText mEmail;
     private EditText mRegPassword;
 
-    public static List<User> users;
+    public static List<User> users = new LinkedList<User>();
 
 
     public static List<User> getUsers() {
@@ -63,7 +64,7 @@ public class RegisterActivity  extends AppCompatActivity {
                 users.add(user);
 
                 Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(RegisterActivity.this, HomeActivity.class);
+                Intent i = new Intent(RegisterActivity.this, BitTrackingActivity.class);
 
                 Log.i(user.toString(), "user radi liiii");
                 startActivity(i);

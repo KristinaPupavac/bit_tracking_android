@@ -56,4 +56,8 @@ public class User {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    public String toString(){
+        return name + surname + mail + password;
+    }
 }
