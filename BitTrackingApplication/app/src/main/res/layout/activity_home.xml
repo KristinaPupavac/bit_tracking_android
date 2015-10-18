@@ -32,12 +32,13 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="189dp"
+            android:layout_height="87dp"
             android:weightSum="1">
 
             <TextView
@@ -78,7 +79,8 @@
             android:layout_height="wrap_content"
             android:text="sign out"
             android:id="@+id/sign_out"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            />
 
     </LinearLayout>
 

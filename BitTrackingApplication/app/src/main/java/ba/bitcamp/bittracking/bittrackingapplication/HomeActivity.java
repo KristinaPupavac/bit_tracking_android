@@ -59,10 +59,21 @@ public class HomeActivity extends AppCompatActivity {
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getToken().toString().equals(mTruckingNumber.getText().toString())) {
                         TextView t = new TextView(HomeActivity.this);
-                        t.setText("Package status: " + list.get(i).getStatus());
+                        if (list.get(i).getStatus() == 1) {
+                            t.setText("Package status: READY FOR SHIPPING");
+                        } else if (list.get(i).getStatus() == 2) {
+                            t.setText("Package status: ON ROUTE");
+                        } else if (list.get(i).getStatus() == 3) {
+                            t.setText("Package status: OUT FOR DELIVERY");
+                        } else if (list.get(i).getStatus() == 4) {
+                            t.setText("Package status: DELIVERED");
+                        } else if (list.get(i).getStatus() == 5) {
+                            t.setText("Package status: RECEIVED");
+                        } else {
+                            mTruckingNumber.setError("Wrong trucking number!");
+                        }
+
                         mLinearLayout.addView(t);
-                    } else {
-                        mTruckingNumber.setError("Wrong trucking number!");
                     }
                 }
 
