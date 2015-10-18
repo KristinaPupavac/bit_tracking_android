@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              >
 
     <ImageView
         android:id="@+id/imageView1"
@@ -13,5 +14,72 @@
         android:src="@drawable/logo"
         />
 
+    <TextView
+        android:layout_width="183dp"
+        android:layout_height="40dp"
+        android:text="Welcome to BitTracking!"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="You need to input package trucking number to check youre package status."
+        android:id="@+id/textView2"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="189dp"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Tracking number:"
+                android:id="@+id/textView3"/>
+
+
+            <EditText
+                android:layout_width="209dp"
+                android:layout_height="40dp"
+                android:id="@+id/trucking_number"
+                />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="43dp"
+                android:layout_height="37dp"
+                android:text="OK"
+                android:id="@+id/button"
+                android:layout_weight="0.53"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="161dp">
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sign out"
+            android:id="@+id/sign_out"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
 
 </LinearLayout>
