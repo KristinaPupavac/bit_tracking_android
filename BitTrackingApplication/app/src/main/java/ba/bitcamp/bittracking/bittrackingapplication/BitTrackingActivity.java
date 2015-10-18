@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
-
 
 public class BitTrackingActivity extends AppCompatActivity {
     private Button mLoginButton;
@@ -38,6 +36,7 @@ public class BitTrackingActivity extends AppCompatActivity {
             public void onClick(View v) {
                for (int i = 0; i < RegisterActivity.users.size(); i++) {
                    if (RegisterActivity.users.get(i).getMail().equals(mMail.getText().toString()) & RegisterActivity.users.get(i).getPassword().equals(mPassword.getText().toString())) {
+                       Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                        startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
                    } else {
                        Toast.makeText(getApplicationContext(), "Wrong input!",
@@ -50,13 +49,11 @@ public class BitTrackingActivity extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
             }
         });
 
-
-
-
-
     }
+
 }

@@ -48,6 +48,15 @@
         android:textAlignment="center"
         android:hint="******"/>
 
+    <EditText
+        android:id="@+id/conf_password"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:hint="******"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
