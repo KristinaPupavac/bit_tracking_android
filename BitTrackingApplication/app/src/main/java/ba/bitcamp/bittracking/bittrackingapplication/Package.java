@@ -12,28 +12,60 @@ public class Package {
     public static final int DELIVERED = 4;
     public static final int RECEIVED = 5;
 
-    private UUID token;
+   // private UUID token;
+    private String token;
     private int status;
 
     public Package (){
 
     }
 
-    public Package(int status){
-        this.token =  UUID.randomUUID();
+    public Package(String token, int status){
+        this.token = token;
         this.status = status;
     }
 
-    public UUID getToken() {
+
+//    public Package(int status){
+//        this.token =  UUID.randomUUID();
+//        this.status = status;
+//    }
+
+//    public UUID getToken() {
+//        return token;
+//    }
+
+//    public void setToken(UUID token) {
+//        this.token = token;
+//    }
+
+
+    public String getToken() {
         return token;
     }
 
-    public void setToken(UUID token) {
+    public void setToken(String token) {
         this.token = token;
     }
 
     public int getStatus() {
+
         return status;
+    }
+
+    public String getStatusName(){
+        if (status==1) {
+            return "READY FOR SHIPPING";
+        } else if (status == 2){
+            return "ON ROUTE";
+        } else if (status == 3) {
+            return "OUT FOR DELIVERY";
+        } else if (status == 4) {
+            return "DELIVERED";
+        } else if (status == 5) {
+            return "RECEIVED";
+        }
+        return null;
     }
 
     public void setStatus(int status) {

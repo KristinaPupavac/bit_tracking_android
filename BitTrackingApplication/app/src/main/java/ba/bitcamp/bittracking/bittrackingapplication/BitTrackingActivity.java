@@ -16,11 +16,15 @@ public class BitTrackingActivity extends AppCompatActivity {
     private EditText mMail;
     private EditText mPassword;
 
+    User user = new User ("Mladen", "Teofilovic", "mladen@bitcamp.ba", "mladen1");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        RegisterActivity.users.add(user);
 
         mLoginButton = (Button) findViewById(R.id.loginbtn);
 
@@ -34,14 +38,20 @@ public class BitTrackingActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               for (int i = 0; i < RegisterActivity.users.size(); i++) {
-                   if (RegisterActivity.users.get(i).getMail().equals(mMail.getText().toString()) & RegisterActivity.users.get(i).getPassword().equals(mPassword.getText().toString())) {
-                       Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
-                   } else {
-                       Toast.makeText(getApplicationContext(), "Wrong input!",
-                               Toast.LENGTH_SHORT).show();
+               if (!RegisterActivity.users.isEmpty()) {
+                   for (int i = 0; i < RegisterActivity.users.size(); i++) {
+                       if (RegisterActivity.users.get(i).getMail().equals(mMail.getText().toString()) & RegisterActivity.users.get(i).getPassword().equals(mPassword.getText().toString())) {
+                           Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
+                       } else {
+                           Toast.makeText(getApplicationContext(), "Wrong input!",
+                                   Toast.LENGTH_SHORT).show();
+                       }
                    }
+
+               } else {
+                   Toast.makeText(getApplicationContext(), "Wrong input!",
+                           Toast.LENGTH_SHORT).show();
                }
             }
         });

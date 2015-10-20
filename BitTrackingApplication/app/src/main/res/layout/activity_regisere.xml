@@ -1,19 +1,22 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
+              android:background="@drawable/map9"
+              tools:context=".RegisterActivity"
+                android:layout_centerInParent="true">
 
-              tools:context=".LoginActivity" >
-
-    <ImageView
-        android:id="@+id/imageView1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:background="#A4A4A4"
-        android:src="@drawable/logo"
-         />
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
 
     <EditText
         android:layout_width="match_parent"
@@ -23,21 +26,27 @@
         android:layout_marginTop="30dp"
         android:hint="example@mail.com"
         android:textAlignment="center"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/reg_name"
         android:hint="Input Name"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/reg_surname"
         android:hint="Input Surname"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:id="@+id/reg_password"
@@ -46,7 +55,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:hint="******"/>
+        android:hint="******"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
 
     <EditText
         android:id="@+id/conf_password"
@@ -55,16 +66,29 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:textAlignment="center"
-        android:hint="******"/>
+        android:hint="******"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="700px"
+        android:layout_height="70px"
         android:id="@+id/registerbtn"
         android:layout_gravity="center"
         android:textColor="#ffffff"
         android:textAlignment="center"
-        android:text="Register"/>
-
-
+        android:text="Sign up"
+        android:background="@drawable/button_bg_stroke"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+
+</RelativeLayout>

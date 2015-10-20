@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Kristina Pupavac on 10/17/2015.
  */
-public class RegisterActivity  extends AppCompatActivity {
+public class  RegisterActivity  extends AppCompatActivity {
     private Button mRegisterButton;
     private EditText mName;
     private EditText mSurname;
@@ -28,7 +28,6 @@ public class RegisterActivity  extends AppCompatActivity {
     private EditText mConfPassword;
 
     public static List<User> users = new LinkedList<User>();
-
 
     public static List<User> getUsers() {
         return users;
@@ -42,10 +41,13 @@ public class RegisterActivity  extends AppCompatActivity {
         RegisterActivity.users.add(user);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regisere);
+
 
         mRegisterButton = (Button) findViewById(R.id.registerbtn);
 
