@@ -43,7 +43,7 @@
 
 
     <Button
-        android:layout_width="700px"
+        android:layout_width="500px"
         android:layout_height="70px"
         android:id="@+id/loginbtn"
         android:textColor="#ffffff"
@@ -54,7 +54,7 @@
         />
 
     <Button
-        android:layout_width="700px"
+        android:layout_width="500px"
         android:layout_height="70px"
         android:id="@+id/register"
         android:textColor="#ffffff"

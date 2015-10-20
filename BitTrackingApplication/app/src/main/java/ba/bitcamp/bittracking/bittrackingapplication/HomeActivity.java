@@ -38,7 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         list.add(p1);
         list.add(p2);
         list.add(p3);
@@ -51,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
         mSignOut = (Button) findViewById(R.id.sign_out);
         t = new TextView(HomeActivity.this);
         t.setTextColor(Color.WHITE);
+        mLinearLayout.addView(t);
+        t.setText("");
 
       /*  TextView text = new TextView(HomeActivity.this);
         text.setText("Tracking package numbers:  p1: " + p1.getToken() + " p2: " +p2.getToken()
@@ -62,33 +63,38 @@ public class HomeActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < list.size(); i++) {
-                    mLinearLayout.addView(t);
-                    if (mTruckingNumber.getText().toString().equals(list.get(i).getToken().toString())) {
-                        t.setText("Package status:" + list.get(i).getStatusName());
-                        break;
+                Package p = Package.getPackageByToken(list, mTruckingNumber.getText().toString());
+               // for (int i = 0; i < list.size(); i++) {
+                    if (p != null) {
+                        t.setText("Package status: " + p.getStatusName());
+
 //                        if (list.get(i).getStatus() == 1) {
 //                            t.setText("Package status: READY FOR SHIPPING");
+//                            break;
 //                        } else if (list.get(i).getStatus() == 2) {
 //                            t.setText("Package status: ON ROUTE");
+//                            break;
 //                        } else if (list.get(i).getStatus() == 3) {
 //                            t.setText("Package status: OUT FOR DELIVERY");
+//                            break;
 //                        } else if (list.get(i).getStatus() == 4) {
 //                            t.setText("Package status: DELIVERED");
+//                            break;
 //                        } else if (list.get(i).getStatus() == 5) {
 //                            t.setText("Package status: RECEIVED");
+//                            break;
 //                        } else {
 //                            mTruckingNumber.setError("Wrong trucking number!");
 //                        }
                     } else {
+                        t.setText("");
                         mTruckingNumber.setError("Wrong trucking number!");
                     }
                 }
-            }
 
         });
 
-        t.setText("");
+
         mSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

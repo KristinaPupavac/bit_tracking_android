@@ -1,5 +1,6 @@
 package ba.bitcamp.bittracking.bittrackingapplication;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -54,7 +55,7 @@ public class Package {
     }
 
     public String getStatusName(){
-        if (status==1) {
+        if (status == 1) {
             return "READY FOR SHIPPING";
         } else if (status == 2){
             return "ON ROUTE";
@@ -64,6 +65,15 @@ public class Package {
             return "DELIVERED";
         } else if (status == 5) {
             return "RECEIVED";
+        }
+        return null;
+    }
+
+    public static Package getPackageByToken(List<Package> list, String token) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getToken().equals(token)){
+                return list.get(i);
+            }
         }
         return null;
     }
