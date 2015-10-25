@@ -7,7 +7,7 @@
     android:layout_centerInParent="true"
     android:padding="10dp"
     tools:context=".LoginActivity"
-    android:background="@drawable/map9">
+    android:background="@drawable/mapa1">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -92,11 +92,11 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/facebook"
-            android:id="@+id/imageButton"
+            android:id="@+id/facebook_button"
             android:layout_alignParentTop="true"
             android:background="@drawable/button_bg_stroke"
-            android:layout_toLeftOf="@+id/imageButton3"
-            android:layout_toStartOf="@+id/imageButton3"/>
+            android:layout_toLeftOf="@+id/twitter_button"
+            android:layout_toStartOf="@+id/twitter_button"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -105,7 +105,7 @@
             android:layout_toLeftOf="@+id/imageButton2"
             android:layout_toStartOf="@+id/imageButton2"
             android:background="@drawable/button_bg_stroke"
-            android:id="@+id/imageButton3"/>
+            android:id="@+id/twitter_button"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -119,19 +119,20 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/location"
+            android:id="@+id/location_button"
             android:layout_alignParentTop="true"
             android:background="@drawable/button_bg_stroke"
-            android:layout_toLeftOf="@+id/imageButton4"
-            android:layout_toStartOf="@+id/imageButton4"/>
+            android:layout_toLeftOf="@+id/info_button"
+            android:layout_toStartOf="@+id/info_button"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/info"
             android:background="@drawable/button_bg_stroke"
-            android:id="@+id/imageButton4"
+            android:id="@+id/info_button"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/imageButton"
-            android:layout_toStartOf="@+id/imageButton"/>
+            android:layout_toLeftOf="@+id/facebook_button"
+            android:layout_toStartOf="@+id/facebook_button"/>
 
     </RelativeLayout>
 
