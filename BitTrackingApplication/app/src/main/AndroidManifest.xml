@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".BitTrackingActivity" >
+        <activity android:name=".controllers.BitTrackingActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,10 +16,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity">
+            android:name=".controllers.RegisterActivity">
         </activity>
         <activity
-            android:name=".HomeActivity">
+            android:name=".controllers.HomeActivity">
         </activity>
 
     </application>
