@@ -35,8 +35,6 @@ public class BitTrackingActivity extends AppCompatActivity {
     private ImageButton mLocation;
     private ImageButton mInfo;
 
-
-
     private EditText mMail;
     private EditText mPassword;
 
@@ -54,7 +52,7 @@ public class BitTrackingActivity extends AppCompatActivity {
         mTwitter = (ImageButton) findViewById(R.id.twitter_button);
         mLocation = (ImageButton) findViewById(R.id.location_button);
         mInfo = (ImageButton) findViewById(R.id.info_button);
-        
+
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
 
@@ -102,6 +100,20 @@ public class BitTrackingActivity extends AppCompatActivity {
                 Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://twitter.com/BitTracking"));
                 startActivity(intent);
 
+            }
+        });
+
+        mInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
             }
         });
 
