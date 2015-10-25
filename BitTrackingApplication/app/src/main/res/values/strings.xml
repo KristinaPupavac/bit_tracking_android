@@ -4,4 +4,11 @@
     <string name="reg_name"></string>
     <string name="reg_surname"></string>
     <string name="reg_password"></string>
+    <string name="package_type">Choose Package Type</string>
+    <string-array name="type_of_packages">
+        <item>Box</item>
+        <item>Envelope</item>
+        <item>Flyer</item>
+        <item>Tube</item>
+    </string-array>
 </resources>

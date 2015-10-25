@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/backmla">
+
+    <TextView
+        android:layout_width="379dp"
+        android:layout_height="78dp"
+        android:text="Create New Request"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipient_name"
+            android:hint="Recipient's Name"
+            android:gravity="center"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipient_address"
+            android:hint="Recipient's Address"
+            android:gravity="center"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_via"
+            android:hint=" Package Weight"
+            android:gravity="center"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dropdown"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_type"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_weight"
+            android:hint="Package Weight"
+            android:gravity="center"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_request"
+            android:text="Create Request"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_bg_stroke"/>
+    </LinearLayout>
+
+</LinearLayout>

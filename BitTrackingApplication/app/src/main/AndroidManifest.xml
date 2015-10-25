@@ -15,13 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".controllers.RegisterActivity">
+        <activity android:name=".controllers.RegisterActivity" >
         </activity>
-        <activity
-            android:name=".controllers.HomeActivity">
+        <activity android:name=".controllers.HomeActivity" >
         </activity>
-
+        <activity android:name=".controllers.CreateRequestActivity" >
+        </activity>
     </application>
 
 </manifest>
