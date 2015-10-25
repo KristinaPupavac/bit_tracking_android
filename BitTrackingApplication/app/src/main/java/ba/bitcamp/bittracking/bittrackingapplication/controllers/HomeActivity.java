@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         list.add(p5);
 
         mTruckingNumber = (EditText) findViewById(R.id.trucking_number);
-        mButton = (Button) findViewById(R.id.button);
+        mButton = (Button) findViewById(R.id.ok_button);
         mLinearLayout = (LinearLayout) findViewById(R.id.layout);
         mSignOut = (Button) findViewById(R.id.sign_out);
         t = new TextView(HomeActivity.this);
