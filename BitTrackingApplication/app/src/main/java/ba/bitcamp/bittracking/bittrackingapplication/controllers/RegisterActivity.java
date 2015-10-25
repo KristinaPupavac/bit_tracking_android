@@ -2,6 +2,8 @@ package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -9,19 +11,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
+import ba.bitcamp.bittracking.bittrackingapplication.helpers.HashHelper;
+import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 
 /**
  * Created by Kristina Pupavac on 10/17/2015.
  */
-public class  RegisterActivity  extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private Button mRegisterButton;
     private EditText mName;
     private EditText mSurname;
@@ -29,22 +41,6 @@ public class  RegisterActivity  extends AppCompatActivity {
     private EditText mEmail;
     private EditText mRegPassword;
     private EditText mConfPassword;
-
-    public static List<User> users = new LinkedList<User>();
-
-    public static List<User> getUsers() {
-        return users;
-    }
-
-    public static void setUsers(List<User> users) {
-        RegisterActivity.users = users;
-    }
-
-    public static void addUser(User user){
-        RegisterActivity.users.add(user);
-    }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +53,7 @@ public class  RegisterActivity  extends AppCompatActivity {
         mName = (EditText) findViewById(R.id.reg_name);
         mSurname = (EditText) findViewById(R.id.reg_surname);
         mEmail = (EditText) findViewById(R.id.reg_email);
-        mRegPassword = (EditText)findViewById(R.id.reg_password);
+        mRegPassword = (EditText) findViewById(R.id.reg_password);
         mConfPassword = (EditText) findViewById(R.id.conf_password);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -69,29 +65,31 @@ public class  RegisterActivity  extends AppCompatActivity {
                 String password = mRegPassword.getText().toString();
                 String confPass = mConfPassword.getText().toString();
 
-
-
-                if (isValidEmail(mail) & checkPassword(confPass) & checkName(name) & checkName(surname) & passConf(password, confPass)) {
+                if (User.isValidEmail(mail) & User.checkPassword(confPass) & User.checkName(name) & User.checkName(surname) & User.passConf(password, confPass)) {
 
                     User user = new User(name, surname, mail, password);
-
-                    users.add(user);
-
-                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RegisterActivity.this, BitTrackingActivity.class);
-
-                    Log.i(user.toString(), "user radi liiii");
-                    startActivity(i);
-
-                } else if (!isValidEmail(mail)) {
+                    user.setPassword(HashHelper.getEncriptedPasswordMD5(user.getPassword()));
+                    JSONObject json = new JSONObject();
+                    try {
+                        json.put("firstName", user.getName());
+                        json.put("lastName", user.getSurname());
+                        json.put("email", user.getMail());
+                        json.put("password", user.getPassword());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    String url = getString(R.string.service_sign_up);
+                    ServiceRequest.post(url, json.toString(), register());
+                    ToastMessage("Redirecting...");
+                } else if (!User.isValidEmail(mail)) {
                     mEmail.setError("Invalid Email");
-                } else if (!checkName(name)) {
+                } else if (!User.checkName(name)) {
                     mName.setError("Your name should have only letters.");
-                }else if (!checkName(surname)) {
+                } else if (!User.checkName(surname)) {
                     mSurname.setError("Your surname should have only letters.");
-                } else if (!checkPassword(confPass)) {
+                } else if (!User.checkPassword(confPass)) {
                     mConfPassword.setError("Invalid Password");
-                } else if (!passConf(password, confPass)){
+                } else if (!User.passConf(password, confPass)) {
                     mConfPassword.setError("Passwords need to mach.");
                 }
             }
@@ -99,75 +97,33 @@ public class  RegisterActivity  extends AppCompatActivity {
 
     }
 
-    /**
-     *
-     * @param pass
-     * @param passconf
-     * @return
-     */
-    private boolean passConf (String pass, String passconf) {
-        if (pass.equals(passconf)){
-            return true;
-        }
-        return false;
+    private void ToastMessage(final String message) {
+        new Handler(Looper.getMainLooper())
+                .post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RegisterActivity.this,
+                                message,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
-    /**
-     *
-     * @param email
-     * @return
-     */
-    private boolean isValidEmail(String email) {
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private Callback register() {
+        return new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
 
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-
-    /**
-     * This method checks if entered character are only letters from A to  Z
-     * @param name
-     * @return
-     */
-    public static boolean checkName(String name) {
-        for (int i = 0; i < name.length(); i++) {
-            if ((name.charAt(i) < 65) || (name.charAt(i) > 90 &&
-                    name.charAt(i) < 97) || (name.charAt(i) > 122 && name.charAt(i) < 262) ||
-                    (name.charAt(i) > 263 && name.charAt(i) < 268) ||
-                    (name.charAt(i) > 269 && name.charAt(i) < 272) ||
-                    (name.charAt(i) > 273 && name.charAt(i) < 352) ||
-                    (name.charAt(i) > 353 && name.charAt(i) < 381) ||
-                    name.charAt(i) > 382) {
-                return false;
             }
-        }
-        return true;
-    }
 
-    /**
-     * Checks if password has more then 6 letters
-     * @param password
-     * @return
-     */
-    public static boolean checkPassword(String password) {
-        int letters = 0;
-        int numbers = 0;
-        if (password.length() < 6) {
-            return false;
-        }
-        for (int i = 0; i < password.length(); i++) {
-            if (password.charAt(i) > 47 && password.charAt(i) < 58) {
-                numbers++;
-            } else if ((password.charAt(i) > 64 && password.charAt(i) < 91) || (password.charAt(i) > 96 && password.charAt(i) < 123)) {
-                letters++;
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                Intent i = new Intent(RegisterActivity.this, BitTrackingActivity.class);
+                startActivity(i);
+
+
             }
-        }
-        if (letters == 0 || numbers == 0) {
-            return false;
-        }
-        return true;
+        };
     }
 }

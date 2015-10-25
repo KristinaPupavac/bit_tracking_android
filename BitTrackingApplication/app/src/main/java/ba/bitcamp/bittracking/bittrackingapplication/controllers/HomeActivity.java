@@ -55,39 +55,13 @@ public class HomeActivity extends AppCompatActivity {
         mLinearLayout.addView(t);
         t.setText("");
 
-      /*  TextView text = new TextView(HomeActivity.this);
-        text.setText("Tracking package numbers:  p1: " + p1.getToken() + " p2: " +p2.getToken()
-                + " p3: " +p3.getToken()+ " p4: " +p4.getToken()+ " p5: " +p5.getToken());
-        text.setTextColor(Color.WHITE);
-        mLinearLayout.addView(text); */
-
-
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Package p = Package.getPackageByToken(list, mTruckingNumber.getText().toString());
-               // for (int i = 0; i < list.size(); i++) {
+
                     if (p != null) {
                         t.setText("Package status: " + p.getStatusName());
-
-//                        if (list.get(i).getStatus() == 1) {
-//                            t.setText("Package status: READY FOR SHIPPING");
-//                            break;
-//                        } else if (list.get(i).getStatus() == 2) {
-//                            t.setText("Package status: ON ROUTE");
-//                            break;
-//                        } else if (list.get(i).getStatus() == 3) {
-//                            t.setText("Package status: OUT FOR DELIVERY");
-//                            break;
-//                        } else if (list.get(i).getStatus() == 4) {
-//                            t.setText("Package status: DELIVERED");
-//                            break;
-//                        } else if (list.get(i).getStatus() == 5) {
-//                            t.setText("Package status: RECEIVED");
-//                            break;
-//                        } else {
-//                            mTruckingNumber.setError("Wrong trucking number!");
-//                        }
                     } else {
                         t.setText("");
                         mTruckingNumber.setError("Wrong trucking number!");
