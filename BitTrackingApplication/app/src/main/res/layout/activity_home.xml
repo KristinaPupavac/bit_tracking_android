@@ -37,7 +37,7 @@
             android:id="@+id/layout"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="231dp"
+            android:layout_height="132dp"
             >
 
         </LinearLayout>
@@ -91,23 +91,45 @@
         android:layout_height="70px"
         android:layout_gravity="center_horizontal"
         android:text="OK"
-        android:id="@+id/button"
+        android:id="@+id/ok_button"
         android:background="@drawable/button_bg_stroke"
         android:textColor="#ffffff"
         android:layout_below="@+id/trucking_number"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="70px"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:text="Create New request"
+        android:id="@+id/new_request_button"
+        android:background="@drawable/button_bg_stroke"
+        android:textColor="#ffffff"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignLeft="@+id/ok_button"
+        android:layout_alignStart="@+id/ok_button"/>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="40dp"
         android:id="@+id/sign_out"
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:text="Sign out"
         android:background="@drawable/button_bg_stroke"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/imageView1"
+        android:layout_alignTop="@+id/package_list_button"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:text="package list"
+        android:id="@+id/package_list_button"
+        android:background="@drawable/button_bg_stroke"
+        android:textColor="#ffffff"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignRight="@+id/ok_button"
+        android:layout_alignEnd="@+id/ok_button"/>
 
 
 </RelativeLayout>

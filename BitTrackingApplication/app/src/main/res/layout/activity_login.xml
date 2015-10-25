@@ -7,7 +7,7 @@
     android:layout_centerInParent="true"
     android:padding="10dp"
     tools:context=".LoginActivity"
-    android:background="@drawable/backmla">
+    android:background="@drawable/map9">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"

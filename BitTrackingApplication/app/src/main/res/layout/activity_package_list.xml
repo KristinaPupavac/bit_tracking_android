@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="top"
+              android:background="@drawable/backmla"
+              android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:textSize="18dp"
+        android:text="My Packages"
+        android:gravity="center"
+        android:layout_span="6"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#ffffff"
+        android:layout_weight="0.15"
+        android:layout_gravity="center_horizontal"></TextView>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_gravity="center"
+        android:layout_width="310dp"
+        android:layout_height="113dp"
+        android:id="@+id/person_recycler_view"
+        android:layout_column="1"
+        android:layout_below="@+id/tableLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.71"/>
+</LinearLayout>
