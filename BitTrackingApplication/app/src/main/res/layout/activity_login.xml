@@ -7,19 +7,34 @@
               android:layout_centerInParent="true"
               android:padding="10dp"
               tools:context=".LoginActivity"
-              android:background="@drawable/mapa"
-                                            >
+              android:background="@drawable/mapa">
+    <RelativeLayout
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:gravity="center"
+    android:src="@drawable/logo">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+</RelativeLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/linearLayout"
     android:layout_centerVertical="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:id="@+id/linearLayout">
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true">
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:id="@+id/email"
@@ -31,7 +46,7 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="******"
@@ -41,21 +56,19 @@
         android:textColorHint="#FFFFFF"
         android:textColor="#ffffff"/>
 
-
     <Button
-        android:layout_width="160dp"
-        android:layout_height="70px"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
         android:id="@+id/loginbtn"
         android:textColor="#ffffff"
         android:textAlignment="center"
         android:text="Sign in"
         android:background="@drawable/button_bg_stroke"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="10dp"/>
 
     <Button
-        android:layout_width="160dp"
-        android:layout_height="70px"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
         android:id="@+id/register"
         android:textColor="#ffffff"
         android:textAlignment="center"
@@ -68,15 +81,59 @@
 
 </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:src="@drawable/logo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+    android:id="@+id/footer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center" >
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/facebook"
+            android:id="@+id/imageButton"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/button_bg_stroke"
+            android:layout_toLeftOf="@+id/imageButton3"
+            android:layout_toStartOf="@+id/imageButton3"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/twitter"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageButton2"
+            android:layout_toStartOf="@+id/imageButton2"
+            android:background="@drawable/button_bg_stroke"
+            android:id="@+id/imageButton3"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/letter"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_bg_stroke"
+            android:id="@+id/imageButton2"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/button_bg_stroke"
+            android:layout_toLeftOf="@+id/imageButton4"
+            android:layout_toStartOf="@+id/imageButton4"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/info"
+            android:background="@drawable/button_bg_stroke"
+            android:id="@+id/imageButton4"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageButton"
+            android:layout_toStartOf="@+id/imageButton"/>
 
+    </RelativeLayout>
 
 
 </RelativeLayout>

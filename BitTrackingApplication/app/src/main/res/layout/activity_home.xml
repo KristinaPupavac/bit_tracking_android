@@ -93,8 +93,8 @@
         android:layout_height="70px"
         android:layout_gravity="center_horizontal"
         android:text="OK"
-        android:id="@+id/button"
         android:background="@drawable/button_bg_stroke"
+        android:id="@+id/button"
         android:textColor="#ffffff"
         android:layout_below="@+id/trucking_number"
         android:layout_centerHorizontal="true"/>
