@@ -119,6 +119,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/location"
+            android:id="@+id/location"
             android:layout_alignParentTop="true"
             android:background="@drawable/button_bg_stroke"
             android:layout_toLeftOf="@+id/imageButton4"

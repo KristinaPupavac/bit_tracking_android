@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class BitTrackingActivity extends AppCompatActivity {
     private Button mLoginButton;
     private Button mRegister;
+    private ImageButton mLocation;
 
     private EditText mMail;
     private EditText mPassword;
@@ -27,8 +29,8 @@ public class BitTrackingActivity extends AppCompatActivity {
         RegisterActivity.users.add(user);
 
         mLoginButton = (Button) findViewById(R.id.loginbtn);
-
         mRegister = (Button) findViewById(R.id.register);
+        mLocation = (ImageButton) findViewById(R.id.location);
 
 
         mMail = (EditText) findViewById(R.id.email);
@@ -61,6 +63,14 @@ public class BitTrackingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
+            }
+        });
+
+        mLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BitTrackingActivity.this, LocationActivity.class));
             }
         });
 
