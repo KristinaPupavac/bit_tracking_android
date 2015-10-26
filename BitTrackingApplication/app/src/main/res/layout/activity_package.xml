@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center">
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_tracking_number"
+        android:gravity="center"
+        android:hint="tracking number"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_recipient_name"
+        android:gravity="center"
+        android:hint="recipient name"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_recipient_address"
+        android:gravity="center"
+        android:hint="recipient address"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_wight"
+        android:gravity="center"
+        android:hint="weight"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_price"
+        android:gravity="center"
+        android:hint="price"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_ar"
+        android:gravity="center"
+        android:hint="approved rejected"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_status"
+        android:gravity="center"
+        android:hint="status"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_time"
+        android:gravity="center"
+        android:hint="time"
+        android:padding="5dp"/>
+
+</LinearLayout>

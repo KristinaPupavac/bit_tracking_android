@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,15 +50,15 @@ public class UserPackagesActivity extends AppCompatActivity {
         list.add(p5);
 
         packageAdapter.notifyDataSetChanged();
-        
+
         mCreateRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserPackagesActivity.this, CreateRequestActivity.class));
             }
         });
-    }
 
+    }
 
     private class PackageHolder extends RecyclerView.ViewHolder {
         public TextView mPackageId;
@@ -71,6 +72,15 @@ public class UserPackagesActivity extends AppCompatActivity {
             mPackageId = (TextView) itemView.findViewById(R.id.package_id);
             mPackageAR = (TextView) itemView.findViewById(R.id.package_approved_rejested);
             mPackageStatus = (TextView) itemView.findViewById(R.id.package_status);
+
+        }
+
+        public void onClick(View v) {
+            Intent intent = new Intent(UserPackagesActivity.this, PackageActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("asd", (Serializable) mPackage);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
 
         public void bindPackage(Package p){
@@ -79,6 +89,7 @@ public class UserPackagesActivity extends AppCompatActivity {
             mPackageAR.setText(mPackage.getStatusName().toString());
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
+
     }
 
 
