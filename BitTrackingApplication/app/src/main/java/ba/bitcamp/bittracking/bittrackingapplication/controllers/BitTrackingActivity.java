@@ -1,22 +1,22 @@
 package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -31,6 +31,8 @@ public class BitTrackingActivity extends AppCompatActivity {
 
     private EditText mMail;
     private EditText mPassword;
+    private ImageButton mTrackPackageButton;
+
 
     User user = new User ("Mladen", "Teofilovic", "mladen@bitcamp.ba", "mladen1");
 
@@ -47,6 +49,8 @@ public class BitTrackingActivity extends AppCompatActivity {
 
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
+
+        mTrackPackageButton = (ImageButton)findViewById(R.id.info);
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +80,13 @@ public class BitTrackingActivity extends AppCompatActivity {
             }
         });
 
+        mTrackPackageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BitTrackingActivity.this, TrackPackageActivity.class));
+            }
+        });
+
     }
 
     private Callback loginCheck() {
@@ -95,7 +106,7 @@ public class BitTrackingActivity extends AppCompatActivity {
 
                     if(id > 0){
                         ToastMessage("Redirecting...");
-                        startActivity(new Intent(BitTrackingActivity.this, HomeActivity.class));
+                        startActivity(new Intent(BitTrackingActivity.this, UserPackagesActivity.class));
 
                     }else{
                     ToastMessage("Wrong input");

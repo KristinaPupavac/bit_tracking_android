@@ -119,16 +119,17 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/location"
+            android:id="@+id/location"
             android:layout_alignParentTop="true"
             android:background="@drawable/button_bg_stroke"
-            android:layout_toLeftOf="@+id/imageButton4"
-            android:layout_toStartOf="@+id/imageButton4"/>
+            android:layout_toLeftOf="@+id/info"
+            android:layout_toStartOf="@+id/info"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/info"
             android:background="@drawable/button_bg_stroke"
-            android:id="@+id/imageButton4"
+            android:id="@+id/info"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/imageButton"
             android:layout_toStartOf="@+id/imageButton"/>
