@@ -73,7 +73,7 @@ public class CreateRequestActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                String url = getString(R.string.service_create_request);
+                String url = getString(R.string.service_create_request_post);
                 ServiceRequest.post(url, json.toString(), createRequest());
                 ToastMessage("Redirecting...");
             }
