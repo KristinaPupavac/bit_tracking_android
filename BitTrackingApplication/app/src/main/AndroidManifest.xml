@@ -17,9 +17,11 @@
         </activity>
         <activity android:name=".controllers.RegisterActivity" >
         </activity>
-        <activity android:name=".controllers.HomeActivity" >
+        <activity android:name=".controllers.TrackPackageActivity" >
         </activity>
         <activity android:name=".controllers.CreateRequestActivity" >
+        </activity>
+        <activity android:name=".controllers.UserPackagesActivity" >
         </activity>
     </application>
 
