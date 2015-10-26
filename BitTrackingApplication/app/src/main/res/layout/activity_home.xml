@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:id="@+id/trucking_number"
+        android:id="@+id/tracking_number"
         android:textColor="#ffffff"
         android:hint="Input tracking number"
         android:textColorHint="#ffffff"
@@ -94,7 +94,7 @@
         android:id="@+id/ok_button"
         android:background="@drawable/button_bg_stroke"
         android:textColor="#ffffff"
-        android:layout_below="@+id/trucking_number"
+        android:layout_below="@+id/tracking_number"
         android:layout_centerHorizontal="true"/>
 
     <Button

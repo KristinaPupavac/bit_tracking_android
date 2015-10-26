@@ -5,11 +5,11 @@ package ba.bitcamp.bittracking.bittrackingapplication.models;
  */
 public class PostOffice {
 
-    public Long id;
+    private Long id;
 
-    public String name;
+    private String name;
 
-    public String address;
+    private String address;
 
     public PostOffice(String name, String address) {
         this.name = name;

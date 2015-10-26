@@ -14,18 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import ba.bitcamp.bittracking.bittrackingapplication.R;
-import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
 /**
  * Created by Kristina Pupavac on 10/17/2015.
  */
 public class HomeActivity extends AppCompatActivity {
 
-    private EditText mTruckingNumber;
+    private EditText mTrackingNumber;
     private Button mButton;
     private Button mSignOut;
     private Button mCreateRequest;
@@ -38,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mTruckingNumber = (EditText) findViewById(R.id.trucking_number);
+        mTrackingNumber = (EditText) findViewById(R.id.tracking_number);
         mLinearLayout = (LinearLayout) findViewById(R.id.layout);
         mSignOut = (Button) findViewById(R.id.sign_out);
         mCreateRequest = (Button) findViewById(R.id.new_request_button);

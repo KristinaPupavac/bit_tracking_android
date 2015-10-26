@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +27,8 @@ import java.util.List;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
+import ba.bitcamp.bittracking.bittrackingapplication.lists.PostOfficeList;
+import ba.bitcamp.bittracking.bittrackingapplication.models.PostOffice;
 
 public class CreateRequestActivity extends AppCompatActivity {
 
@@ -35,11 +38,28 @@ public class CreateRequestActivity extends AppCompatActivity {
     private EditText mWeight;
     private Spinner mPackageType;
     private Spinner mPostOffices;
+    static ArrayList<PostOffice> offices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_request);
+
+        String url = getString(R.string.service_create_request);
+        PostOfficeList postOffices = PostOfficeList.getInstance();
+        if(postOffices.getPostOfficeList().size()==0){
+            postOffices.getPostOfficeListRequest(url);
+            offices = postOffices.getPostOfficeList();
+        }
+        List<String> stringList = new ArrayList<>();
+
+        for(int i =0;i<offices.size();i++){
+            stringList.add(offices.get(i).getName());
+        }
+        mPostOffices = (Spinner) findViewById(R.id.send_via);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, stringList);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mPostOffices.setAdapter(spinnerAdapter);
 
         mCreateRequestButton = (Button)findViewById(R.id.create_request);
         mRecipientName = (EditText)findViewById(R.id.recipient_name);
@@ -49,8 +69,6 @@ public class CreateRequestActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_of_packages, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mPackageType.setAdapter(adapter);
-        String url = getString(R.string.service_create_request);
-        ServiceRequest.get(url, getPostOffices());
 
 
         mCreateRequestButton.setOnClickListener(new View.OnClickListener() {
@@ -104,37 +122,6 @@ public class CreateRequestActivity extends AppCompatActivity {
 
                 ToastMessage("Added Successfully");
 
-            }
-        };
-    }
-
-    private Callback getPostOffices() {
-        return new Callback() {
-            @Override
-            public void onFailure(Request request, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Response response) throws IOException {
-                String responseJSON= response.body().string();
-                JSONArray arr = new JSONArray();
-                List<String> stringList = new ArrayList<>();
-                try {
-                     arr = new JSONArray(responseJSON);
-                    for(int i=0;i<arr.length();i++){
-                        JSONObject obj = arr.getJSONObject(i);
-                        String name = obj.getString("name");
-                        stringList.add(name);
-                    }
-                }catch(JSONException e){
-                    e.printStackTrace();
-                }
-
-                mPostOffices = (Spinner) findViewById(R.id.send_via);
-                ArrayAdapter<String> spinerAdapter = new ArrayAdapter<String>(CreateRequestActivity.this, android.R.layout.simple_spinner_item, stringList);
-                spinerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                mPostOffices.setAdapter(spinerAdapter);
             }
         };
     }

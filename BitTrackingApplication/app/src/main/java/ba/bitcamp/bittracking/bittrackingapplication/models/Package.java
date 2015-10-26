@@ -31,7 +31,7 @@ public class Package {
 
     public String recipientName;
 
-    public Integer status;
+    public String status;
 
     public Package (){
 
@@ -101,34 +101,22 @@ public class Package {
         this.recipientName = recipientName;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Package(String recipientAddress, Double weight, String packageType, String recipientName) {
+    public Package(String recipientName, String recipientAddress, Double weight, String packageType, String trackingNum, String status) {
         this.recipientAddress = recipientAddress;
         this.weight = weight;
         this.packageType = packageType;
         this.recipientName = recipientName;
+        this.trackingNum = trackingNum;
+        this.status = status;
     }
 
-    public String getStatusName(){
-        if (status == 1) {
-            return "READY FOR SHIPPING";
-        } else if (status == 2){
-            return "ON ROUTE";
-        } else if (status == 3) {
-            return "OUT FOR DELIVERY";
-        } else if (status == 4) {
-            return "DELIVERED";
-        } else if (status == 5) {
-            return "RECEIVED";
-        }
-        return null;
-    }
 
 }

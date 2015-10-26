@@ -15,27 +15,26 @@ import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.HashHelper;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
-import ba.bitcamp.bittracking.bittrackingapplication.models.User;
+import ba.bitcamp.bittracking.bittrackingapplication.models.*;
+import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
 public class BitTrackingActivity extends AppCompatActivity {
     private Button mLoginButton;
     private Button mRegister;
-
     private EditText mMail;
     private EditText mPassword;
     private ImageButton mTrackPackageButton;
-
-
-    User user = new User ("Mladen", "Teofilovic", "mladen@bitcamp.ba", "mladen1");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class BitTrackingActivity extends AppCompatActivity {
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
 
-        mTrackPackageButton = (ImageButton)findViewById(R.id.info);
+        mTrackPackageButton = (ImageButton) findViewById(R.id.info);
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +59,10 @@ public class BitTrackingActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString();
                 password = HashHelper.getEncriptedPasswordMD5(password);
                 JSONObject json = new JSONObject();
-                try{
+                try {
                     json.put("email", email);
                     json.put("password", password);
-                }catch(JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 String url = getString(R.string.service_sign_in);
@@ -99,27 +98,42 @@ public class BitTrackingActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response response) throws IOException {
 
+                String responseJSON = response.body().string();
+                JSONArray arr = new JSONArray();
+                List<Package> packages = new ArrayList<>();
                 try {
-                    String responseJSON= response.body().string();
-                    JSONObject json = new JSONObject(responseJSON);
-                    Long id = json.getLong("id");
-
-                    if(id > 0){
-                        ToastMessage("Redirecting...");
-                        startActivity(new Intent(BitTrackingActivity.this, UserPackagesActivity.class));
-
-                    }else{
-                    ToastMessage("Wrong input");
+                    arr = new JSONArray(responseJSON);
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        Long id = obj.getLong("id");
+                        String trackingNum = obj.getString("trackingNum");
+                        String recipientName = obj.getString("recipientName");
+                        String recipientAddress = obj.getString("recipientAddress");
+                        Double weight = obj.getDouble("weight");
+                        String packageType = obj.getString("packageType");
+                        String status =obj.getString("status");
+                        Package pack = new Package(recipientName, recipientAddress, weight, packageType, trackingNum, status);
+                        packages.add(pack);
                     }
-
                 } catch (JSONException e) {
-                   ToastMessage("Wrong input");
+                    e.printStackTrace();
                 }
+
+                if (packages.size() > 0) {
+                    ToastMessage("Redirecting...");
+                    startActivity(new Intent(BitTrackingActivity.this, UserPackagesActivity.class));
+                } else {
+                    ToastMessage("Wrong input");
+                }
+
             }
         };
     }
 
-    private void ToastMessage(final String message){
+
+
+
+    private void ToastMessage(final String message) {
         new Handler(Looper.getMainLooper())
                 .post(new Runnable() {
                     @Override

@@ -5,4 +5,5 @@
     <string name="service_sign_in">http://192.168.0.101:9000/check</string>
     <string name="service_create_request">http://192.168.0.101:9000/user</string>
     <string name="service_create_request_post">http://192.168.0.101:9000/user/createrequest</string>
+    <string name="service_get_package_list">http://192.168.0.101:9000/user/getpackagelist</string>
 </resources>
