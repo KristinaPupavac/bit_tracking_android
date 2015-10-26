@@ -1,5 +1,7 @@
 package ba.bitcamp.bittracking.bittrackingapplication.models;
 
+import android.content.Intent;
+
 import java.util.List;
 
 /**
@@ -7,13 +9,14 @@ import java.util.List;
  */
 public class Package {
 
-    public static final int READY_FOR_SHIPPING = 1;
-    public static  final int ON_ROUTE = 2;
-    public static final int OUT_FOR_DELIVERY = 3;
-    public static final int DELIVERED = 4;
-    public static final int RECEIVED = 5;
+    public static final Integer READY_FOR_SHIPPING = 1;
+    public static  final Integer ON_ROUTE = 2;
+    public static final Integer OUT_FOR_DELIVERY = 3;
+    public static final Integer DELIVERED = 4;
+    public static final Integer RECEIVED = 5;
 
-    public Long id;
+    //public Long id;
+    public Integer id;
 
     public String trackingNum;
 
@@ -35,6 +38,11 @@ public class Package {
 
     public Package (){
 
+    }
+
+    public Package(Integer id, Integer status){
+        this.id = id;
+        this.status = status;
     }
 
     public String getTrackingNum() {
@@ -107,6 +115,14 @@ public class Package {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Package(String recipientAddress, Double weight, String packageType, String recipientName) {

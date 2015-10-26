@@ -19,11 +19,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.Package;
+import java.util.ArrayList;
+import java.util.List;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.HashHelper;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
-import ba.bitcamp.bittracking.bittrackingapplication.models.User;
+import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 
 public class BitTrackingActivity extends AppCompatActivity {
     private Button mLoginButton;
