@@ -4,6 +4,7 @@ import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +29,18 @@ public class UserPackagesActivity extends AppCompatActivity {
 
     private Button mCreateRequestButton;
     private RecyclerView recyclerView;
+    private PackageAdapter packageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_packages);
+
+        mCreateRequestButton = (Button)findViewById(R.id.new_request_button);
+        recyclerView = (RecyclerView) findViewById(R.id.packages_recycler_view);
+        packageAdapter = new PackageAdapter(list);
+        recyclerView.setAdapter(packageAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list.add(p1);
         list.add(p2);
@@ -40,9 +48,8 @@ public class UserPackagesActivity extends AppCompatActivity {
         list.add(p4);
         list.add(p5);
 
-        mCreateRequestButton = (Button)findViewById(R.id.new_request_button);
-        recyclerView = (RecyclerView) findViewById(R.id.packages_recycler_view);
-
+        packageAdapter.notifyDataSetChanged();
+        
         mCreateRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,31 +79,31 @@ public class UserPackagesActivity extends AppCompatActivity {
             mPackageAR.setText(mPackage.getStatusName().toString());
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
+    }
 
-        private class PackageAdapter extends RecyclerView.Adapter<PackageHolder>{
-            private List<Package> mPackages;
-            public PackageAdapter(List<Package> packages){
-                mPackages = packages;
-            }
-            @Override
-            public PackageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                LayoutInflater layoutInflater = LayoutInflater.from(UserPackagesActivity.this);
-                View view = layoutInflater.inflate(R.layout.activity_user_packages, parent, false);
-                return new PackageHolder(view);
-            }
 
-            @Override
-            public void onBindViewHolder(PackageHolder holder, int position) {
-                Package p = mPackages.get(position);
-                holder.bindPackage(p);
-
-            }
-
-            @Override
-            public int getItemCount() {
-                return mPackages.size();
-            }
+    private class PackageAdapter extends RecyclerView.Adapter<PackageHolder>{
+        private List<Package> mPackages;
+        public PackageAdapter(List<Package> packages){
+            mPackages = packages;
+        }
+        @Override
+        public PackageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(UserPackagesActivity.this);
+            View view = layoutInflater.inflate(R.layout.activity_user_packages, parent, false);
+            return new PackageHolder(view);
         }
 
+        @Override
+        public void onBindViewHolder(PackageHolder holder, int position) {
+            Package p = mPackages.get(position);
+            holder.bindPackage(p);
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mPackages.size();
+        }
     }
 }
