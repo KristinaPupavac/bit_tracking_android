@@ -1,7 +1,5 @@
 package ba.bitcamp.bittracking.bittrackingapplication.models;
 
-import java.util.List;
-
 /**
  * Created by Kristina Pupavac on 10/18/2015.
  */
@@ -13,28 +11,42 @@ public class Package {
     public static final int DELIVERED = 4;
     public static final int RECEIVED = 5;
 
-    public Long id;
+    private Long id;
 
-    public String trackingNum;
+    private String trackingNum;
 
-    public String recipientAddress;
+    private String recipientAddress;
 
-    public String destination;
+    private String destination;
 
-    public Double weight;
+    private Double weight;
 
-    public Double price;
+    private Double price;
 
-    public String packageType;
+    private String packageType;
 
-    public String senderName;
+    private String senderName;
 
-    public String recipientName;
+    private String recipientName;
 
-    public String status;
+    private String status;
+
+    private String approved = "Waiting For Approval";
 
     public Package (){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getApproved(){
+        return approved;
+    }
+
+    public void setApproved(String approved){
+        this.approved = approved;
     }
 
     public String getTrackingNum() {
@@ -109,13 +121,15 @@ public class Package {
         this.status = status;
     }
 
-    public Package(String recipientName, String recipientAddress, Double weight, String packageType, String trackingNum, String status) {
+    public Package(Long id, String recipientName, String recipientAddress, Double weight, String packageType, String trackingNum, String status, String approved) {
+        this.id = id;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
         this.packageType = packageType;
         this.recipientName = recipientName;
         this.trackingNum = trackingNum;
         this.status = status;
+        this.approved = approved;
     }
 
 

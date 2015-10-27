@@ -26,7 +26,8 @@ import java.util.List;
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.HashHelper;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
-import ba.bitcamp.bittracking.bittrackingapplication.models.*;
+import ba.bitcamp.bittracking.bittrackingapplication.lists.MapsActivity;
+import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
 public class BitTrackingActivity extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class BitTrackingActivity extends AppCompatActivity {
     private EditText mMail;
     private EditText mPassword;
     private ImageButton mTrackPackageButton;
+    private ImageButton mMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class BitTrackingActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.password);
 
         mTrackPackageButton = (ImageButton) findViewById(R.id.info);
+        mMaps = (ImageButton) findViewById(R.id.location);
 
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +89,14 @@ public class BitTrackingActivity extends AppCompatActivity {
             }
         });
 
+        mMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private Callback loginCheck() {
@@ -101,6 +112,7 @@ public class BitTrackingActivity extends AppCompatActivity {
                 String responseJSON = response.body().string();
                 JSONArray arr = new JSONArray();
                 List<Package> packages = new ArrayList<>();
+                PackageList lista = PackageList.getInstance();
                 try {
                     arr = new JSONArray(responseJSON);
                     for (int i = 0; i < arr.length(); i++) {
@@ -112,14 +124,24 @@ public class BitTrackingActivity extends AppCompatActivity {
                         Double weight = obj.getDouble("weight");
                         String packageType = obj.getString("packageType");
                         String status =obj.getString("status");
-                        Package pack = new Package(recipientName, recipientAddress, weight, packageType, trackingNum, status);
-                        packages.add(pack);
+                        Boolean approved = obj.getBoolean("approved");
+                        String approvedStatus = "";
+                        if(approved==null){
+                            approvedStatus = "Waiting for approval";
+                        }else if(approved){
+                            approvedStatus = "Approved";
+                        }else if(!approved){
+                            approvedStatus = "Rejected";
+                        }
+                        Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
+                        //packages.add(pack);
+                        lista.getPackageList().add(pack);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                if (packages.size() > 0) {
+                if (lista.getPackageList().size()> 0) {
                     ToastMessage("Redirecting...");
                     startActivity(new Intent(BitTrackingActivity.this, UserPackagesActivity.class));
                 } else {

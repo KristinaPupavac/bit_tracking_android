@@ -2,9 +2,6 @@ package ba.bitcamp.bittracking.bittrackingapplication.lists;
 
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -13,8 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
-import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
 /**
@@ -63,8 +62,17 @@ public class PackageList {
                         Double weight = obj.getDouble("weight");
                         String packageType = obj.getString("packageType");
                         String status = obj.getString("status");
+                        Boolean approved = obj.getBoolean("approved");
+                        String approvedStatus = "";
+                        if(approved==null){
+                            approvedStatus = "Waiting for approval";
+                        }else if(approved){
+                            approvedStatus = "Approved";
+                        }else if(!approved){
+                            approvedStatus = "Rejected";
+                        }
 
-                        mPackage.add(new Package(recipientName, recipientAddress, weight, packageType, trackingNum, status));
+                        mPackage.add(new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus));
 
                     }
                 } catch (JSONException e) {

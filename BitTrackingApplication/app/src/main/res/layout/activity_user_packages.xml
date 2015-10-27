@@ -79,7 +79,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="420dp"
-        android:id="@+id/person_recycler_view"
+        android:id="@+id/packages_recycler_view"
         android:layout_column="1"
         android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"

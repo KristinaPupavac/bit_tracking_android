@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
-import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
 /**
@@ -56,7 +55,7 @@ public class TrackPackageActivity extends AppCompatActivity {
                         t = new TextView(TrackPackageActivity.this);
                         t.setTextColor(Color.WHITE);
                         mLinearLayout.addView(t);
-                        if(!packages.get(i).status.equals("DELIVERED")) {
+                        if(!packages.get(i).getStatus().equals("DELIVERED")) {
                             t.setText("OUT FOR DELIVERY");
                         }else{
                             t.setText("DELIVERED");
