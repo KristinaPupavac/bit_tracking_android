@@ -33,7 +33,7 @@ public class BitTrackingActivity extends AppCompatActivity {
     private EditText mMail;
     private EditText mPassword;
 
-    private ImageButton mImageMapButton;
+    private ImageButton mImageMapButton; //google map image button on home screen
 
     User user = new User ("Mladen", "Teofilovic", "mladen@bitcamp.ba", "mladen1");
 
@@ -79,7 +79,9 @@ public class BitTrackingActivity extends AppCompatActivity {
             }
         });
 
+        //initialising button
         mImageMapButton = (ImageButton)findViewById(R.id.map_button);
+        //adding button listener
         mImageMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

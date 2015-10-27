@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="service_my_ip">http://192.168.0.14:9000</string>
-    <string name="service_sign_up">http://192.168.0.14/register</string>
-    <string name="service_sign_in">http://192.168.0.14/check</string>
-    <string name="service_create_request">http://192.168.0.14:9000/user</string>
+    <string name="service_my_ip">http://10.0.82.150:9000</string>
+    <string name="service_sign_up">http://10.0.82.150:9000/register</string>
+    <string name="service_sign_in">http://10.0.82.150:9000/check</string>
+    <string name="service_create_request">http://10.0.82.150:9000/user</string>
 </resources>

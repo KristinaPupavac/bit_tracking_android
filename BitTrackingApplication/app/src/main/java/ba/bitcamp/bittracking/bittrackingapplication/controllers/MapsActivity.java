@@ -1,11 +1,16 @@
 package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -13,40 +18,58 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 
 /**
- * Set up a basic Google Map on Android
+ * Set up a current location Google Map on Android
  */
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity {
 
     private GoogleMap mMap;
+    private LatLng myPosition;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
 
+        SupportMapFragment mf = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mMap = mf.getMap();
+        mMap.setMyLocationEnabled(true);
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-    /**
-     * This method eill manipulate google mape once is available
-     * This is where we can add markers or lines, add listeners or move the camera.Marker is added near Sarajevo
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        //creating criteria to retreive provider
+        Criteria criteria = new Criteria();
+        //getting the best provider
+        String provider = lm.getBestProvider(criteria, true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
+        //getting current location
+        Location location = lm.getLastKnownLocation(provider);
+        if (location != null) {
+            // Getting latitude of the current location
+            double latitude = location.getLatitude();
 
-        // Add a marker in Sarajevo and move the camera
-        LatLng sarajevo = new LatLng(43.8667, 18.4167);
-        // Add a marker with a title that is shown in its info window.
-        mMap.addMarker(new MarkerOptions().position(sarajevo).title("Marker in Sarajevo"));
-        // Move the camera to show the marker.
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sarajevo));
+            // Getting longitude of the current location
+            double longitude = location.getLongitude();
+
+            // Creating a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
+
+            myPosition = new LatLng(latitude, longitude);
+
+            mMap.addMarker(new MarkerOptions().position(myPosition).title("My Location"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude),5));
+        }
     }
 }
+
+
