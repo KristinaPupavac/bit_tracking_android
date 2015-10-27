@@ -1,6 +1,7 @@
 package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -58,6 +59,7 @@ public class BitTrackingActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mLoginButton.setBackgroundColor(Color.rgb(0, 153, 51));
                 String email = mMail.getText().toString();
                 String password = mPassword.getText().toString();
                 password = HashHelper.getEncriptedPasswordMD5(password);

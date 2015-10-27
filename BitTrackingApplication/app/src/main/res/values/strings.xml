@@ -13,4 +13,5 @@
     </string-array>
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_key">AIzaSyC8ub2HeEAu_3h2ok952lP7pOJlABtNbek</string>
+    <string name="add_request">NEW PACKAGE</string>
 </resources>
