@@ -7,7 +7,7 @@
     android:layout_centerInParent="true"
     android:padding="10dp"
     tools:context=".LoginActivity"
-    android:background="@drawable/backmla">
+    android:background="@drawable/back">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -40,9 +40,7 @@
             android:id="@+id/email"
             android:hint="example@mail.com"
             android:textAlignment="center"
-            android:inputType="textEmailAddress"
-            android:textColorHint="#FFFFFF"
-            android:textColor="#ffffff"/>
+            android:inputType="textEmailAddress"/>
 
         <EditText
             android:id="@+id/password"
@@ -52,15 +50,12 @@
             android:hint="******"
             android:layout_marginTop="-2dp"
             android:padding="10dp"
-            android:textAlignment="center"
-            android:textColorHint="#FFFFFF"
-            android:textColor="#ffffff"/>
+            android:textAlignment="center"/>
 
         <Button
             android:layout_width="250dp"
             android:layout_height="20dp"
             android:id="@+id/loginbtn"
-            android:textColor="#ffffff"
             android:textAlignment="center"
             android:text="Sign in"
             android:background="@drawable/button_bg_stroke"
@@ -70,7 +65,6 @@
             android:layout_width="250dp"
             android:layout_height="20dp"
             android:id="@+id/register"
-            android:textColor="#ffffff"
             android:textAlignment="center"
             android:text="Sign up"
             android:background="@drawable/button_bg_stroke"

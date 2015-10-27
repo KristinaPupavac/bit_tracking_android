@@ -33,12 +33,12 @@ public class PackagePagerActivity extends FragmentActivity{
             @Override
             public Fragment getItem(int position) {
                 Package p = mPackages.get(position);
-                return p;
+                return null;
             }
 
             @Override
             public int getCount() {
-                return 0;
+                return mPackages.size();
             }
         });
 
