@@ -26,6 +26,7 @@ import java.util.List;
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.HashHelper;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
+import ba.bitcamp.bittracking.bittrackingapplication.lists.MapsActivity;
 import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
@@ -35,6 +36,7 @@ public class BitTrackingActivity extends AppCompatActivity {
     private EditText mMail;
     private EditText mPassword;
     private ImageButton mTrackPackageButton;
+    private ImageButton mMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class BitTrackingActivity extends AppCompatActivity {
 
         mTrackPackageButton = (ImageButton) findViewById(R.id.info);
 
+        mMaps = (ImageButton) findViewById(R.id.location);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +86,14 @@ public class BitTrackingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BitTrackingActivity.this, TrackPackageActivity.class));
+            }
+        });
+
+        mMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
             }
         });
 
