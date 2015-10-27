@@ -28,12 +28,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="#FFFF99"
-        android:layout_weight="0.27">
+        android:layout_weight="0.41">
      <TextView
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:text="Package info"
+         android:paddingBottom="20dp"
          android:textSize="20sp"
          android:paddingLeft="20dp"
          android:textColor="#000099"/>
@@ -51,7 +51,7 @@
         android:id="@+id/package_tracking_number"
         android:gravity="center"
         android:hint="tracking number"
-        android:padding="5dp"/>
+        android:paddingBottom="20dp"/>
 
      <!--Recipient name   -->
     <LinearLayout

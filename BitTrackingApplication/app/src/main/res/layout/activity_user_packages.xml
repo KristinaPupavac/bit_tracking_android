@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="top"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#B0B5B5"
+              android:gravity="top"
+              android:orientation="vertical"
+              android:weightSum="1">
+
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -17,41 +19,43 @@
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:src="@drawable/logo"/>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:weightSum="1">
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_span="6"
+            android:layout_weight="0.13"
+            android:gravity="center"
+            android:text="My Packages"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:typeface="serif"></TextView>
+
         <Button
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Create New request"
             android:id="@+id/new_request_button"
+            android:layout_width="99dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@anroid:drawable/addrequest"
+            android:text="@string/add_request"
             android:textSize="12sp"
-            android:layout_weight="0.18" />
+            android:background="0000000"/>
 
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="143dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:textSize="18dp"
-        android:text="My Packages"
-        android:gravity="center"
-        android:layout_span="6"
-        android:layout_weight="0.15"
-        android:layout_gravity="center_horizontal"></TextView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,28 +64,30 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="number"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="number"/>
+
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="approved/rejected"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="approved/rejected"/>
+
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="status"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="status"/>
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_gravity="center"
+        android:id="@+id/packages_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="420dp"
-        android:id="@+id/packages_recycler_view"
-        android:layout_column="1"
         android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"
+        android:layout_column="1"
+        android:layout_gravity="center"
         android:layout_weight="0.60"/>
 </LinearLayout>

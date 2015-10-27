@@ -3,19 +3,79 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backmla"
+    android:background="#B0B5B5"
     android:layout_centerInParent="true"
     android:padding="10dp"
     >
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:src="@drawable/logo">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:src="@drawable/logo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="50dp"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout">
+        <TextView
+            android:layout_width="183dp"
+            android:layout_height="40dp"
+            android:text="Welcome to BitTracking!"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="You need to input package tracking number to check your package status."
+            android:id="@+id/textView2"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:textAlignment="center"
+            android:id="@+id/tracking_number"
+            android:hint="Input tracking number"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:text="OK"
+            android:id="@+id/ok_button"
+            android:background="#5a90dd"
+            android:layout_below="@+id/tracking_number"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -44,57 +104,6 @@
 
         </LinearLayout>
     </LinearLayout>
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:src="@drawable/logo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
 
-    <TextView
-        android:layout_width="183dp"
-        android:layout_height="40dp"
-        android:text="Welcome to BitTracking!"
-        android:textColor="#ffffff"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="You need to input package tracking number to check your package status."
-        android:textColor="#ffffff"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:id="@+id/tracking_number"
-        android:textColor="#ffffff"
-        android:hint="Input tracking number"
-        android:textColorHint="#ffffff"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <Button
-        android:layout_width="700px"
-        android:layout_height="70px"
-        android:layout_gravity="center_horizontal"
-        android:text="OK"
-        android:id="@+id/ok_button"
-        android:background="@drawable/button_bg_stroke"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/tracking_number"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
