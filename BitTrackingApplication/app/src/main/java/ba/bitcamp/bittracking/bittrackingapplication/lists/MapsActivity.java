@@ -5,6 +5,9 @@ import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +22,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.jar.Manifest;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
@@ -35,6 +45,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        Toast.makeText(getApplicationContext(), getCurrentLocation(this).toString(), Toast.LENGTH_SHORT).show();
+        String location = getStringLocation(getCurrentLocation(this));
+        //String location = "18.5589&42.1546";
+        if(networkInfo != null && networkInfo.isConnected()) {
+            new DownloadDataTask().execute("http://10.0.82.146:9000/json/" + location);
+
+            //new DownloadDataTask().execute("http://www.klix.ba");
+        } else {
+
+        }
     }
 
 
@@ -50,7 +72,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         mMap.addMarker(new MarkerOptions().position(getCurrentLocation(this)).title("Current Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(getCurrentLocation(this)));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
@@ -81,8 +102,86 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         }
-        return new LatLng(location.getLatitude(), location.getLongitude());
 
+        return new LatLng(location.getLatitude(), location.getLongitude());
     }
 
+    public String getStringLocation(LatLng lng){
+        return lng.longitude + "&" + lng.latitude;
+    }
+
+    private class DownloadDataTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return downloadData(params[0]);
+            } catch (IOException e) {
+                return "Unable to retreive data. URL may be invalid.";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            String[] postOfficeLoc = result.split(",");
+            LatLng officeLocation = new LatLng(Double.parseDouble(postOfficeLoc[0]), Double.parseDouble(postOfficeLoc[1]));
+            mMap.addMarker(new MarkerOptions().position(officeLocation).title(postOfficeLoc[2]));
+            onMapReady(mMap);
+        }
+
+        private String downloadData(String myUrl) throws IOException {
+            InputStream is = null;
+            // KOLIKO CEMO UZETI ZNAKOVA SA STRANICE, DA NE BI SVE SKIDALI
+            int length = 5500;
+            try {
+                URL url = new URL(myUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(10000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("GET");
+                conn.setDoInput(true);
+                conn.connect();
+                int response = conn.getResponseCode();
+                is = conn.getInputStream();
+                String dataAsString = readIt(is, length);
+                return dataAsString;
+            } finally {
+                if (is != null) {
+                    is.close();
+                }
+            }
+        }
+
+        public String readIt(InputStream stream, int length) throws IOException, UnsupportedEncodingException {
+            // CITANJE PREKO OBICNOG READERA
+            Reader reader = new InputStreamReader(stream, "UTF-8");
+            char[] buffer = new char[length];
+            reader.read(buffer);
+            String readBuffer = new String(buffer);
+
+            // CITANJE PREKO JSON READERA
+            /*JsonReader json = new JsonReader(new InputStreamReader(stream, "UTF-8"));
+            String readBuffer = "";
+            int readBufferInt = 0;
+
+            json.beginArray();
+            while(json.hasNext()) {
+                json.beginObject();
+                while(json.hasNext()) {
+                    String name = json.nextName();
+                    if (name.equals("name")) {
+                        readBuffer += json.nextString() + " (";
+                    } else if (name.equals("address")) {
+                        readBuffer += json.nextString() + ") \n";
+                    } else {
+                        json.skipValue();
+                    }
+                }
+                json.endObject();
+            }
+            json.endArray();*/
+
+            return readBuffer;
+        }
+    }
 }
