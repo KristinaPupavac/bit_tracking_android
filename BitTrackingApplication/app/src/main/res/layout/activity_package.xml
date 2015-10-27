@@ -7,9 +7,23 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:id="@+id/package_tracking_number_view"
+        android:gravity="center"
+        android:hint="Tracking Number"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/package_tracking_number"
         android:gravity="center"
         android:hint="tracking number"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_recipient_name_view"
+        android:gravity="center"
+        android:hint="Recipient Name"
         android:padding="5dp"/>
     <TextView
         android:layout_width="300dp"
@@ -21,6 +35,13 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:id="@+id/package_recipient_address_view"
+        android:gravity="center"
+        android:hint="Recipient Address"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/package_recipient_address"
         android:gravity="center"
         android:hint="recipient address"
@@ -28,15 +49,37 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:id="@+id/package_wight_view"
+        android:gravity="center"
+        android:hint="Weight"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/package_wight"
         android:gravity="center"
-        android:hint="weight"/>
+        android:hint="weight"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_price_view"
+        android:gravity="center"
+        android:hint="Price"
+        android:padding="5dp"/>
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/package_price"
         android:gravity="center"
         android:hint="price"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_ar_view"
+        android:gravity="center"
+        android:hint="Approved/Rejected"
         android:padding="5dp"/>
     <TextView
         android:layout_width="300dp"
@@ -48,9 +91,23 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:id="@+id/package_status_view"
+        android:gravity="center"
+        android:hint="Status"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/package_status"
         android:gravity="center"
         android:hint="status"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/package_time_view"
+        android:gravity="center"
+        android:hint="Time"
         android:padding="5dp"/>
     <TextView
         android:layout_width="300dp"

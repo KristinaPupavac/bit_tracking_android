@@ -3,6 +3,7 @@ package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 import ba.bitcamp.bittracking.bittrackingapplication.models.*;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -94,6 +95,9 @@ public class UserPackagesActivity extends AppCompatActivity {
 
 
     private class PackageAdapter extends RecyclerView.Adapter<PackageHolder>{
+
+
+
         private List<Package> mPackages;
         public PackageAdapter(List<Package> packages){
             mPackages = packages;
