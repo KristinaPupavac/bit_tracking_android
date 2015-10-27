@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Google Maps API key
+      https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=71:DD:D6:D5:C2:3C:C9:B9:A5:13:B5:40:7D:F9:54:9D:19:8C:52:A2%3Bba.bitcamp.bittracking.android.map
+      -->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyCKlczmn1UC6lqNO7bLRZ4P2pMDxx4KxkQ
+    </string>
+
+</resources>

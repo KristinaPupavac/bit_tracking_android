@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -31,6 +32,8 @@ public class BitTrackingActivity extends AppCompatActivity {
 
     private EditText mMail;
     private EditText mPassword;
+
+    private ImageButton mImageMapButton;
 
     User user = new User ("Mladen", "Teofilovic", "mladen@bitcamp.ba", "mladen1");
 
@@ -73,6 +76,14 @@ public class BitTrackingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
+            }
+        });
+
+        mImageMapButton = (ImageButton)findViewById(R.id.map_button);
+        mImageMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BitTrackingActivity.this, MapsActivity.class));
             }
         });
 

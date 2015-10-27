@@ -116,6 +116,7 @@
             android:background="@drawable/button_bg_stroke"
             android:id="@+id/imageButton2"/>
         <ImageButton
+            android:id="@+id/map_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/location"
