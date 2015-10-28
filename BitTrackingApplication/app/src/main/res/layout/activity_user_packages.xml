@@ -48,10 +48,10 @@
             android:id="@+id/new_request_button"
             android:layout_width="99dp"
             android:layout_height="50dp"
-            android:drawableLeft="@anroid:drawable/addrequest"
+            android:drawableLeft="@drawable/addrequest"
             android:text="@string/add_request"
             android:textSize="12sp"
-            android:background="0000000"/>
+            android:background="#000000"/>
 
     </LinearLayout>
 
