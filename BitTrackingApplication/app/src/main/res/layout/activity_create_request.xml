@@ -62,17 +62,13 @@
             android:hint=" Package Weight"
             android:gravity="center"
             android:drawSelectorOnTop="true"
-            android:spinnerMode="dropdown"
-            android:textColorHint="#FFFFFF"
-            android:textColor="#ffffff"/>
+            android:spinnerMode="dropdown"/>
         <Spinner
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/package_type"
             android:gravity="center"
-            android:spinnerMode="dropdown"
-            android:textColorHint="#FFFFFF"
-            android:textColor="#ffffff"/>
+            android:spinnerMode="dropdown"/>
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"

@@ -76,6 +76,7 @@ public class UserPackagesActivity extends AppCompatActivity {
         public TextView mPackageAR;
         public TextView mPackageStatus;
         public Package mPackage;
+        public Button mInfo;
 
 
         public PackageHolder(View itemView) {
@@ -84,11 +85,13 @@ public class UserPackagesActivity extends AppCompatActivity {
             mPackageId = (TextView) itemView.findViewById(R.id.package_id);
             mPackageAR = (TextView) itemView.findViewById(R.id.package_approved_rejected);
             mPackageStatus = (TextView) itemView.findViewById(R.id.package_status);
+            mInfo = (Button) itemView.findViewById(R.id.info_package);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            mInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(UserPackagesActivity.this, PackageActivity.class);
+                    //Intent intent = new Intent(UserPackagesActivity.this, PackageActivity.class);
+                    Intent intent = PackagePagerActivity.newIntent(UserPackagesActivity.this, mPackage.getId());
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("asd", findPosition(mPackage));
                     intent.putExtras(bundle);
