@@ -7,7 +7,6 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,14 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
-import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 public class UserPackagesActivity extends AppCompatActivity {
 
@@ -45,17 +42,19 @@ public class UserPackagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_packages);
         Intent intnt = getIntent();
+        String id = intnt.getStringExtra("id");
         String email = intnt.getStringExtra("email");
         String url = getString(R.string.service_get_user_packages);
         JSONObject json = new JSONObject();
-         PackageList.getInstance().getPackageList().clear();
-        try{
+        PackageList.getInstance().getPackageList().clear();
+
+        try {
             json.put("email", email);
-        }catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         ServiceRequest.post(url, json.toString(), getPackages());
-        mCreateRequestButton = (Button)findViewById(R.id.new_request_button);
+        mCreateRequestButton = (Button) findViewById(R.id.new_request_button);
 
         recyclerView = (RecyclerView) findViewById(R.id.packages_recycler_view);
         packageAdapter = new PackageAdapter(PackageList.getInstance().getPackageList());
@@ -72,11 +71,13 @@ public class UserPackagesActivity extends AppCompatActivity {
         });
     }
 
-    private class PackageAdapter extends RecyclerView.Adapter<PackageHolder>{
+    private class PackageAdapter extends RecyclerView.Adapter<PackageHolder> {
         private List<Package> mPackages;
-        public PackageAdapter(List<Package> packages){
+
+        public PackageAdapter(List<Package> packages) {
             mPackages = packages;
         }
+
         @Override
         public PackageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(UserPackagesActivity.this);
@@ -148,26 +149,32 @@ public class UserPackagesActivity extends AppCompatActivity {
                 PackageList lista = PackageList.getInstance();
                 try {
                     arr = new JSONArray(responseJSON);
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject obj = arr.getJSONObject(i);
-                        Long id = obj.getLong("id");
-                        String trackingNum = obj.getString("trackingNum");
-                        String recipientName = obj.getString("recipientName");
-                        String recipientAddress = obj.getString("recipientAddress");
-                        Double weight = obj.getDouble("weight");
-                        String packageType = obj.getString("packageType");
-                        String status =obj.getString("status");
-                        Boolean approved = obj.getBoolean("approved");
-                        String approvedStatus = "";
-                        if(approved==null){
-                            approvedStatus = "Waiting for approval";
-                        }else if(approved){
-                            approvedStatus = "Approved";
-                        }else if(!approved){
-                            approvedStatus = "Rejected";
+
+                    if (arr.length() > 0) {
+                        for (int i = 0; i < arr.length(); i++) {
+                            JSONObject obj = arr.getJSONObject(i);
+                            Long id = obj.getLong("id");
+                            String trackingNum = obj.getString("trackingNum");
+                            String recipientName = obj.getString("recipientName");
+                            String recipientAddress = obj.getString("recipientAddress");
+                            Double weight = obj.getDouble("weight");
+                            String packageType = obj.getString("packageType");
+                            String status = obj.getString("status");
+                            Boolean approved = obj.getBoolean("approved");
+                            String approvedStatus = "";
+                            if (approved == null) {
+                                approvedStatus = "Waiting for approval";
+                            } else if (approved) {
+                                approvedStatus = "Approved";
+                            } else if (!approved) {
+                                approvedStatus = "Rejected";
+                                trackingNum = "Rejected";
+                            }
+                            Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
+                            lista.getPackageList().add(pack);
                         }
-                        Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
-                        lista.getPackageList().add(pack);
+                    } else {
+                        ToastMessage("No Packages Available!");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -188,9 +195,9 @@ public class UserPackagesActivity extends AppCompatActivity {
                 });
     }
 
-    public static int findPosition(Package pack){
-        for(int i =0;i<PackageList.getInstance().getPackageList().size();i++){
-            if(pack.getId().equals(PackageList.getInstance().getPackageList().get(i).getId())){
+    public static int findPosition(Package pack) {
+        for (int i = 0; i < PackageList.getInstance().getPackageList().size(); i++) {
+            if (pack.getId().equals(PackageList.getInstance().getPackageList().get(i).getId())) {
                 return i;
             }
         }

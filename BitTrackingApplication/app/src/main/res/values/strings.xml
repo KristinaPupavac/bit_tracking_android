@@ -18,4 +18,5 @@
     <string name="sign_out_button">Sign Out</string>
     <string name="key_user_email">ba.bitcamp.bittracking.user_email</string>
     <string name="key_user_password">ba.bitcamp.bittracking.user_password</string>
+    <string name="create_request_textview">Create New Request</string>
 </resources>

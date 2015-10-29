@@ -36,6 +36,7 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Input email address"
             android:textAlignment="center"/>
         <EditText
@@ -50,6 +51,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Input password"
+            android:gravity="center"
             android:textAlignment="center"/>
         <EditText
             android:id="@+id/password"
