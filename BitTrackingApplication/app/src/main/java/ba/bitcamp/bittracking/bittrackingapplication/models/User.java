@@ -1,5 +1,8 @@
 package ba.bitcamp.bittracking.bittrackingapplication.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,6 +10,13 @@ import java.util.regex.Pattern;
  * Created by Kristina Pupavac on 10/16/2015.
  */
 public class User {
+    private static User instance = new User();
+
+    public static User getInstance() {
+        return instance;
+    }
+
+    private Long id;
     private String name;
     private String surname;
     private String mail;
@@ -26,6 +36,14 @@ public class User {
     public User (String mail, String password){
         this.mail = mail;
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -76,6 +94,19 @@ public class User {
             return true;
         }
         return false;
+    }
+
+    public String toJson(){
+        JSONObject obj = new JSONObject();
+
+        try {
+            obj.put("email", mail);
+            obj.put("password", password);
+            return obj.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

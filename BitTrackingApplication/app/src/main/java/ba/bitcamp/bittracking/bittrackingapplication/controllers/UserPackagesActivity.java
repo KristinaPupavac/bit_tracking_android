@@ -2,20 +2,36 @@ package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
+import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
+import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 public class UserPackagesActivity extends AppCompatActivity {
 
@@ -28,7 +44,17 @@ public class UserPackagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_packages);
-
+        Intent intnt = getIntent();
+        String email = intnt.getStringExtra("email");
+        String url = getString(R.string.service_get_user_packages);
+        JSONObject json = new JSONObject();
+         PackageList.getInstance().getPackageList().clear();
+        try{
+            json.put("email", email);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        ServiceRequest.post(url, json.toString(), getPackages());
         mCreateRequestButton = (Button)findViewById(R.id.new_request_button);
 
         recyclerView = (RecyclerView) findViewById(R.id.packages_recycler_view);
@@ -98,8 +124,6 @@ public class UserPackagesActivity extends AppCompatActivity {
 
         }
 
-
-
         public void bindPackage(Package p) {
             mPackage = p;
             mPackageId.setText(mPackage.getId().toString());
@@ -107,6 +131,61 @@ public class UserPackagesActivity extends AppCompatActivity {
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
 
+    }
+
+    private Callback getPackages() {
+        return new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                String responseJSON = response.body().string();
+                JSONArray arr = new JSONArray();
+                PackageList lista = PackageList.getInstance();
+                try {
+                    arr = new JSONArray(responseJSON);
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        Long id = obj.getLong("id");
+                        String trackingNum = obj.getString("trackingNum");
+                        String recipientName = obj.getString("recipientName");
+                        String recipientAddress = obj.getString("recipientAddress");
+                        Double weight = obj.getDouble("weight");
+                        String packageType = obj.getString("packageType");
+                        String status =obj.getString("status");
+                        Boolean approved = obj.getBoolean("approved");
+                        String approvedStatus = "";
+                        if(approved==null){
+                            approvedStatus = "Waiting for approval";
+                        }else if(approved){
+                            approvedStatus = "Approved";
+                        }else if(!approved){
+                            approvedStatus = "Rejected";
+                        }
+                        Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
+                        lista.getPackageList().add(pack);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+
+    private void ToastMessage(final String message) {
+        new Handler(Looper.getMainLooper())
+                .post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(UserPackagesActivity.this,
+                                message,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public static int findPosition(Package pack){

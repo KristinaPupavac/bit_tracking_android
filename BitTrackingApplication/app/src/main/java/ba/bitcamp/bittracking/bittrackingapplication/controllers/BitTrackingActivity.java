@@ -1,6 +1,8 @@
 package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,8 +32,11 @@ import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.MapsActivity;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
+import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 public class BitTrackingActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    public static final String SHARED_PREFERENCES = "ba.bitcamp.bittracking.shared_preferences";
     private Button mLoginButton;
     private Button mRegister;
     private EditText mMail;
@@ -44,35 +49,46 @@ public class BitTrackingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mSharedPreferences = this.getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
+        String email = mSharedPreferences.getString(
+                getString(R.string.key_user_email),
+                null
+        );
+
+        String password = mSharedPreferences.getString(
+                getString(R.string.key_user_password),
+                null
+        );
+
+        if (email != null && password != null) {
+            setUserData(email, password);
+            loginUser();
+        }
+
         mLoginButton = (Button) findViewById(R.id.loginbtn);
-
         mRegister = (Button) findViewById(R.id.register);
-
-
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
-
         mTrackPackageButton = (ImageButton) findViewById(R.id.info);
         mMaps = (ImageButton) findViewById(R.id.location);
-
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mLoginButton.setBackgroundColor(Color.rgb(0, 153, 51));
+
                 String email = mMail.getText().toString();
                 String password = mPassword.getText().toString();
-                password = HashHelper.getEncriptedPasswordMD5(password);
-                JSONObject json = new JSONObject();
-                try {
-                    json.put("email", email);
-                    json.put("password", password);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if ("".equals(email)) {
+                    mMail.setError("This field is required");
                 }
-                String url = getString(R.string.service_sign_in);
-
-                ServiceRequest.post(url, json.toString(), loginCheck());
+                if ("".equals(password)) {
+                    mPassword.setError("This field is required");
+                }
+                mLoginButton.setBackgroundColor(Color.rgb(90, 144, 221));
+                password = HashHelper.getEncriptedPasswordMD5(password);
+                setUserData(email, password);
+                loginUser();
             }
         });
 
@@ -101,6 +117,23 @@ public class BitTrackingActivity extends AppCompatActivity {
 
     }
 
+    private void saveUserCr() {
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+        User u = User.getInstance();
+
+        editor.putString(
+                getString(R.string.key_user_email),
+                u.getMail()
+        );
+
+        editor.putString(
+                getString(R.string.key_user_password),
+                u.getPassword()
+        );
+        editor.commit();
+    }
+
     private Callback loginCheck() {
         return new Callback() {
             @Override
@@ -112,50 +145,42 @@ public class BitTrackingActivity extends AppCompatActivity {
             public void onResponse(Response response) throws IOException {
 
                 String responseJSON = response.body().string();
-                JSONArray arr = new JSONArray();
-                List<Package> packages = new ArrayList<>();
-                PackageList lista = PackageList.getInstance();
+
                 try {
-                    arr = new JSONArray(responseJSON);
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject obj = arr.getJSONObject(i);
-                        Long id = obj.getLong("id");
-                        String trackingNum = obj.getString("trackingNum");
-                        String recipientName = obj.getString("recipientName");
-                        String recipientAddress = obj.getString("recipientAddress");
-                        Double weight = obj.getDouble("weight");
-                        String packageType = obj.getString("packageType");
-                        String status =obj.getString("status");
-                        Boolean approved = obj.getBoolean("approved");
-                        String approvedStatus = "";
-                        if(approved==null){
-                            approvedStatus = "Waiting for approval";
-                        }else if(approved){
-                            approvedStatus = "Approved";
-                        }else if(!approved){
-                            approvedStatus = "Rejected";
-                        }
-                        Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
-                        //packages.add(pack);
-                        lista.getPackageList().add(pack);
+                    JSONObject user = new JSONObject(responseJSON);
+                    Long id = user.getLong("id");
+                    if (id > 0) {
+                        String firstName = user.getString("firstName");
+                        String lastName = user.getString("lastName");
+                        String email = user.getString("email");
+                        User u = User.getInstance();
+                        u.setId(id);
+                        u.setName(firstName);
+                        u.setSurname(lastName);
+                        u.setMail(email);
+                        saveUserCr();
+                        goToUserPanel();
+                    } else {
+                        ToastMessage("Email or password incorrect. Please enter valid email and password.");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                if (lista.getPackageList().size()> 0) {
-                    ToastMessage("Redirecting...");
-                    startActivity(new Intent(BitTrackingActivity.this, UserPackagesActivity.class));
-                } else {
-                    ToastMessage("Wrong input");
-                }
-
             }
         };
     }
 
+    private void goToUserPanel() {
+        Intent test = new Intent(this, UserPanelActivity.class);
+        startActivity(test);
+    }
 
-
+    private void loginUser() {
+        String url = getString(R.string.service_sign_in);
+        Callback callback = loginCheck();
+        String json = User.getInstance().toJson();
+        ServiceRequest.post(url, json, callback);
+    }
 
     private void ToastMessage(final String message) {
         new Handler(Looper.getMainLooper())
@@ -167,6 +192,13 @@ public class BitTrackingActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void setUserData(String email, String password) {
+        User user = User.getInstance();
+        user.setMail(email);
+        user.setPassword(password);
+
     }
 
 }

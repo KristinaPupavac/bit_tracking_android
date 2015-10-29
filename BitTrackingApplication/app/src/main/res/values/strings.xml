@@ -14,4 +14,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="google_maps_key">AIzaSyC8ub2HeEAu_3h2ok952lP7pOJlABtNbek</string>
     <string name="add_request">NEW PACKAGE</string>
+    <string name="my_packages">My Packages</string>
+    <string name="sign_out_button">Sign Out</string>
+    <string name="key_user_email">ba.bitcamp.bittracking.user_email</string>
+    <string name="key_user_password">ba.bitcamp.bittracking.user_password</string>
 </resources>

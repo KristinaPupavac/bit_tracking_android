@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!User.checkPassword(confPass)) {
                     mConfPassword.setError("Invalid Password");
                 } else if (!User.passConf(password, confPass)) {
-                    mConfPassword.setError("Passwords need to mach.");
+                    mConfPassword.setError("Passwords need to match.");
                 }
             }
         });
