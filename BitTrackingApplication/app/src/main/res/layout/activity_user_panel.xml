@@ -5,21 +5,140 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ba.bitcamp.bittracking.bittrackingapplication.controllers.UserPanelActivity">
+    tools:context="ba.bitcamp.bittracking.bittrackingapplication.controllers.UserPanelActivity"
+    android:background="@drawable/backgroundpic">
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:src="@drawable/logo">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/logo"/>
+    </RelativeLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_packages"
-        android:id="@+id/my_packages_button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:orientation="horizontal">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="47dp"
+        android:id="@+id/linearLayout3">
+
+        <LinearLayout
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name:"
+                android:textSize="15dp"
+                android:id="@+id/textView4"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name:"
+                android:textSize="15dp"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textSize="15dp"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:id="@+id/user_name"
+                android:textSize="14dp"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Surname"
+                android:id="@+id/user_surname"
+                android:textSize="14dp"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:id="@+id/user_email"
+                android:textSize="14dp"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_out_button"
         android:id="@+id/sign_out_button"
-        android:layout_below="@+id/my_packages_button"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/user_tracking"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
+
+    <Button
+        android:layout_width="170dp"
+        android:background="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:text="@string/my_packages"
+        android:drawableLeft="@drawable/mypackage"
+        android:id="@+id/my_packages_button"
+        android:layout_below="@+id/linearLayout3"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:text="Track package"
+        android:drawableLeft="@drawable/tracking"
+        android:padding="5dp"
+        android:id="@+id/user_tracking"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/my_packages_button"
+        android:layout_alignLeft="@+id/my_packages_button"
+        android:layout_alignStart="@+id/my_packages_button"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to BitTracking!"
+        android:textSize="30sp"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

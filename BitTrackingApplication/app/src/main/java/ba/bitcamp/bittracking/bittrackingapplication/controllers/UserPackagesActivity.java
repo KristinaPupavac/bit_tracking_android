@@ -99,7 +99,7 @@ public class UserPackagesActivity extends AppCompatActivity {
     }
 
     private class PackageHolder extends RecyclerView.ViewHolder {
-        public TextView mPackageId;
+        public TextView mPackageTimestamp;
         public TextView mPackageAR;
         public TextView mPackageStatus;
         public Package mPackage;
@@ -108,7 +108,7 @@ public class UserPackagesActivity extends AppCompatActivity {
         public PackageHolder(View itemView) {
             super(itemView);
 
-            mPackageId = (TextView) itemView.findViewById(R.id.package_id);
+            mPackageTimestamp = (TextView) itemView.findViewById(R.id.package_id);
             mPackageAR = (TextView) itemView.findViewById(R.id.package_approved_rejected);
             mPackageStatus = (TextView) itemView.findViewById(R.id.package_status);
 
@@ -127,7 +127,7 @@ public class UserPackagesActivity extends AppCompatActivity {
 
         public void bindPackage(Package p) {
             mPackage = p;
-            mPackageId.setText(mPackage.getId().toString());
+            mPackageTimestamp.setText(mPackage.getTimestamp().toString());
             mPackageAR.setText(mPackage.getApproved().toString());
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
@@ -160,17 +160,10 @@ public class UserPackagesActivity extends AppCompatActivity {
                             Double weight = obj.getDouble("weight");
                             String packageType = obj.getString("packageType");
                             String status = obj.getString("status");
-                            Boolean approved = obj.getBoolean("approved");
-                            String approvedStatus = "";
-                            if (approved == null) {
-                                approvedStatus = "Waiting for approval";
-                            } else if (approved) {
-                                approvedStatus = "Approved";
-                            } else if (!approved) {
-                                approvedStatus = "Rejected";
-                                trackingNum = "Rejected";
-                            }
-                            Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus);
+                            String approved = obj.getString("approved");
+                            String timestamp = obj.getString("timestamp");
+                            String price = obj.getString("price");
+                            Package pack = new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approved, timestamp, Double.parseDouble(price));
                             lista.getPackageList().add(pack);
                         }
                     } else {

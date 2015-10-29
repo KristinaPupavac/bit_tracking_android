@@ -138,7 +138,7 @@ public class BitTrackingActivity extends AppCompatActivity {
         return new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-
+                ToastMessage("Email or password incorrect. Please enter valid email and password.");
             }
 
             @Override
@@ -164,7 +164,7 @@ public class BitTrackingActivity extends AppCompatActivity {
                         ToastMessage("Email or password incorrect. Please enter valid email and password.");
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    ToastMessage("Email or password incorrect. Please enter valid email and password.");
                 }
             }
         };

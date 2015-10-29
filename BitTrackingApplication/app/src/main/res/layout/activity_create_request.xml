@@ -32,7 +32,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
         <TextView
@@ -57,6 +57,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/recipient_address"
             android:gravity="center"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Package weight"
+            android:gravity="center"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_weight"
+            android:gravity="center"/>
+
         <Spinner
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -75,23 +88,14 @@
             android:spinnerMode="dropdown"
             android:textColorHint="#FFFFFF"
             android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Package weight"
-            android:gravity="center"
-            android:textAlignment="center"/>
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/package_weight"
-            android:gravity="center"/>
+
         <Button
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:id="@+id/create_request"
             android:text="Create Request"
-            android:background="#5a90dd"/>
+            android:background="#5a90dd"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>

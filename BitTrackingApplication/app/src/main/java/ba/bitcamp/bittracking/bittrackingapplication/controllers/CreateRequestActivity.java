@@ -29,6 +29,7 @@ import ba.bitcamp.bittracking.bittrackingapplication.R;
 import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PostOfficeList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.PostOffice;
+import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 public class CreateRequestActivity extends AppCompatActivity {
 
@@ -76,15 +77,22 @@ public class CreateRequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String recipientName = mRecipientName.getText().toString();
                 String recipientAddress = mRecipientAddress.getText().toString();
-                String weight = mWeight.getText().toString();
+                String weightAsString = mWeight.getText().toString();
+                Double weight = 0.0;
+                try {
+                    weight = Double.parseDouble(weightAsString);
+                }catch (NumberFormatException e){
+                    mWeight.setError("Please insert correct values!");
+                }
                 String postOffice = mPostOffices.getSelectedItem().toString();
                 String packageType = mPackageType.getSelectedItem().toString();
 
                 JSONObject json = new JSONObject();
                 try {
+                    json.put("userId", User.getInstance().getId().toString());
                     json.put("recipientName", recipientName);
                     json.put("recipientAddress", recipientAddress);
-                    json.put("weight", weight);
+                    json.put("weight", weight.toString());
                     json.put("packageType", packageType);
                     json.put("postOfficeName", postOffice);
 
@@ -96,6 +104,7 @@ public class CreateRequestActivity extends AppCompatActivity {
                 ToastMessage("Redirecting...");
             }
         });
+
 
     }
     private void ToastMessage(final String message) {
@@ -114,12 +123,18 @@ public class CreateRequestActivity extends AppCompatActivity {
         return new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-
+                ToastMessage("Fill this form correctly!");
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
 
+                String responseJSON = response.body().string();
+                try{
+                    JSONObject obj = new JSONObject(responseJSON);
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
                 ToastMessage("Added Successfully");
 
             }

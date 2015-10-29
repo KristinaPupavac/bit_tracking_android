@@ -46,6 +46,6 @@ public class PackageActivity extends AppCompatActivity {
         mAR.setText(p.getApproved());
         mStatus.setText(p.getStatus());
         mPrice.setText(String.valueOf(p.getPrice()));
-        mTime.setText("");
+        mTime.setText(p.getTimestamp());
     }
 }

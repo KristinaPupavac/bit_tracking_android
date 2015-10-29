@@ -11,6 +11,7 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
@@ -20,6 +21,10 @@ public class UserPanelActivity extends AppCompatActivity {
 
     private Button mSignOut;
     private Button myPackages;
+    private TextView mName;
+    private TextView mSurname;
+    private TextView mEmail;
+    private Button mTracking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,22 @@ public class UserPanelActivity extends AppCompatActivity {
 
         mSignOut = (Button)findViewById(R.id.sign_out_button);
         myPackages = (Button)findViewById(R.id.my_packages_button);
+        mName = (TextView) findViewById(R.id.user_name);
+        mSurname = (TextView) findViewById(R.id.user_surname);
+        mEmail = (TextView) findViewById(R.id.user_email);
+        mTracking = (Button) findViewById(R.id.user_tracking);
+
+        mName.setText(User.getInstance().getName().toString());
+        mSurname.setText(User.getInstance().getSurname().toString());
+        mEmail.setText(User.getInstance().getMail().toString());
+
+        mTracking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserPanelActivity.this, TrackPackageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
