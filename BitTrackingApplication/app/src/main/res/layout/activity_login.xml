@@ -96,7 +96,7 @@
             android:src="@drawable/facebook"
             android:id="@+id/imageButton"
             android:layout_alignParentTop="true"
-            android:background="#000000"
+            android:background="?android:selectableItemBackground"
             android:layout_toLeftOf="@+id/imageButton3"
             android:layout_toStartOf="@+id/imageButton3"/>
         <ImageButton
@@ -106,16 +106,16 @@
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/imageButton2"
             android:layout_toStartOf="@+id/imageButton2"
-            android:background="#000000"
+            android:background="?android:selectableItemBackground"
             android:id="@+id/imageButton3"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/letter"
+            android:src="@drawable/mail"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="#000000"
+            android:background="?android:selectableItemBackground"
             android:id="@+id/imageButton2"/>
         <ImageButton
             android:layout_width="50dp"
@@ -123,13 +123,14 @@
             android:src="@drawable/location"
             android:id="@+id/location"
             android:layout_alignParentTop="true"
-            android:background="#000000"
+            android:background="?android:selectableItemBackground"
             android:layout_toLeftOf="@+id/info"
             android:layout_toStartOf="@+id/info"/>
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/info"
+            android:src="@drawable/tracking"
+            android:background="?android:selectableItemBackground"
             android:id="@+id/info"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/imageButton"
