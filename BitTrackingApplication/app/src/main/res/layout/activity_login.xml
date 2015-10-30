@@ -44,10 +44,11 @@
             android:textAlignment="center"/>
         <EditText
             android:layout_width="260dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:padding="10dp"
             android:id="@+id/email"
             android:textAlignment="center"
+            style="@style/edittext_style"
             android:inputType="textEmailAddress"/>
 
         <TextView
@@ -61,10 +62,11 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="260dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:inputType="textPassword"
             android:layout_marginTop="-2dp"
             android:padding="10dp"
+            style="@style/edittext_style"
             android:textAlignment="center"/>
 
         <Button
