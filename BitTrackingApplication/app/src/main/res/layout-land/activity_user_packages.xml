@@ -52,11 +52,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="APPROVED/REJECTED"
@@ -64,7 +65,7 @@
             android:textColor="#ffffff"/>
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="STATUS"
@@ -84,11 +85,10 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/packages_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="214dp"
         android:layout_below="@+id/tableLayout"
         android:layout_centerHorizontal="true"
         android:layout_column="1"
         android:layout_gravity="center"
-        android:layout_weight="0.60"
         android:textColor="#ffffff"/>
 </LinearLayout>

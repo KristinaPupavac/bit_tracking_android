@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
+import ba.bitcamp.bittracking.bittrackingapplication.lists.MapsActivity;
 import ba.bitcamp.bittracking.bittrackingapplication.models.User;
 
 public class UserPanelActivity extends AppCompatActivity {
@@ -25,6 +27,11 @@ public class UserPanelActivity extends AppCompatActivity {
     private TextView mSurname;
     private TextView mEmail;
     private Button mTracking;
+    private Button mCreateRequestButton;
+    private Button mTrackPackageButton;
+    private Button mMaps;
+    private Button mFacebook;
+    private Button mTwitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +44,41 @@ public class UserPanelActivity extends AppCompatActivity {
         mSurname = (TextView) findViewById(R.id.user_surname);
         mEmail = (TextView) findViewById(R.id.user_email);
         mTracking = (Button) findViewById(R.id.user_tracking);
+        mCreateRequestButton = (Button) findViewById(R.id.new_request_button);
 
         mName.setText(User.getInstance().getName().toString());
         mSurname.setText(User.getInstance().getSurname().toString());
         mEmail.setText(User.getInstance().getMail().toString());
+
+        mTrackPackageButton = (Button) findViewById(R.id.info_user);
+        mMaps = (Button) findViewById(R.id.location_user);
+        mFacebook = (Button) findViewById(R.id.facebook_button_user);
+        mTwitter = (Button) findViewById(R.id.twitter_button_user);
 
         mTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserPanelActivity.this, TrackPackageActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        mFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.facebook.com/Bit-Tracking-462032430635765/"));
+                startActivity(intent);
+            }
+        });
+
+        mTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://twitter.com/BitTracking"));
+                startActivity(intent);
+
             }
         });
 
@@ -62,10 +94,35 @@ public class UserPanelActivity extends AppCompatActivity {
         myPackages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
                 Intent goToMyPackages = new Intent(UserPanelActivity.this, UserPackagesActivity.class);
                 goToMyPackages.putExtra("email", User.getInstance().getMail());
                 startActivity(goToMyPackages);
 
+            }
+        });
+        mCreateRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserPanelActivity.this, CreateRequestActivity.class));
+            }
+        });
+
+        mTrackPackageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserPanelActivity.this, TrackPackageActivity.class));
+            }
+        });
+
+        mMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -86,6 +143,8 @@ public class UserPanelActivity extends AppCompatActivity {
             }
         }
     };
+
+
 
     @Override
     public void onBackPressed(){

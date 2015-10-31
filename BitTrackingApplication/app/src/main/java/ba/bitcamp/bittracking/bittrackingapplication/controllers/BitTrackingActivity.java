@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -43,6 +44,9 @@ public class BitTrackingActivity extends AppCompatActivity {
     private EditText mPassword;
     private ImageButton mTrackPackageButton;
     private ImageButton mMaps;
+    private ImageButton mFacebook;
+    private ImageButton mTwitter;
+    private ImageButton mPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,19 @@ public class BitTrackingActivity extends AppCompatActivity {
         mPassword = (EditText) findViewById(R.id.password);
         mTrackPackageButton = (ImageButton) findViewById(R.id.info);
         mMaps = (ImageButton) findViewById(R.id.location);
+        mFacebook = (ImageButton) findViewById(R.id.facebook_button);
+        mTwitter = (ImageButton) findViewById(R.id.twitter_button);
+        mPage = (ImageButton)findViewById(R.id.page);
+
+        mPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://localhost:9000"));
+                startActivity(intent);
+
+            }
+        });
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +131,27 @@ public class BitTrackingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        mFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.facebook.com/Bit-Tracking-462032430635765/"));
+                startActivity(intent);
+            }
+        });
+
+        mTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://twitter.com/BitTracking"));
+                startActivity(intent);
+
+            }
+        });
+
 
     }
 
