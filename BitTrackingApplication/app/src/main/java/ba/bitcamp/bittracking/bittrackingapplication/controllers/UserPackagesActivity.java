@@ -1,6 +1,7 @@
 package ba.bitcamp.bittracking.bittrackingapplication.controllers;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -30,20 +31,23 @@ import ba.bitcamp.bittracking.bittrackingapplication.helpers.ServiceRequest;
 import ba.bitcamp.bittracking.bittrackingapplication.lists.PackageList;
 import ba.bitcamp.bittracking.bittrackingapplication.models.Package;
 
+import static ba.bitcamp.bittracking.bittrackingapplication.R.id.package_list_info_btn;
+
 public class UserPackagesActivity extends AppCompatActivity {
 
-    private Button mCreateRequestButton;
+
     private RecyclerView recyclerView;
     private PackageAdapter packageAdapter;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_packages);
-        Intent intnt = getIntent();
-        String id = intnt.getStringExtra("id");
-        String email = intnt.getStringExtra("email");
+        Intent intent= getIntent();
+        String id = intent.getStringExtra("id");
+        String email = intent.getStringExtra("email");
         String url = getString(R.string.service_get_user_packages);
         JSONObject json = new JSONObject();
         PackageList.getInstance().getPackageList().clear();
@@ -54,7 +58,7 @@ public class UserPackagesActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         ServiceRequest.post(url, json.toString(), getPackages());
-        mCreateRequestButton = (Button) findViewById(R.id.new_request_button);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.packages_recycler_view);
         packageAdapter = new PackageAdapter(PackageList.getInstance().getPackageList());
@@ -63,12 +67,7 @@ public class UserPackagesActivity extends AppCompatActivity {
 
         packageAdapter.notifyDataSetChanged();
 
-        mCreateRequestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserPackagesActivity.this, CreateRequestActivity.class));
-            }
-        });
+
     }
 
     private class PackageAdapter extends RecyclerView.Adapter<PackageHolder> {
@@ -99,20 +98,20 @@ public class UserPackagesActivity extends AppCompatActivity {
     }
 
     private class PackageHolder extends RecyclerView.ViewHolder {
-        public TextView mPackageTimestamp;
         public TextView mPackageAR;
         public TextView mPackageStatus;
         public Package mPackage;
+        public Button mInfo;
 
 
         public PackageHolder(View itemView) {
             super(itemView);
 
-            mPackageTimestamp = (TextView) itemView.findViewById(R.id.package_id);
             mPackageAR = (TextView) itemView.findViewById(R.id.package_approved_rejected);
             mPackageStatus = (TextView) itemView.findViewById(R.id.package_status);
+            mInfo = (Button) itemView.findViewById(package_list_info_btn);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            mInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(UserPackagesActivity.this, PackageActivity.class);
@@ -127,8 +126,14 @@ public class UserPackagesActivity extends AppCompatActivity {
 
         public void bindPackage(Package p) {
             mPackage = p;
-            mPackageTimestamp.setText(mPackage.getTimestamp().toString());
-            mPackageAR.setText(mPackage.getApproved().toString());
+
+            if (mPackage.getApproved().toString().toLowerCase().equals("approved")){
+                mPackageAR.setTextColor(Color.GREEN);
+                mPackageAR.setText(mPackage.getApproved().toString());
+            } else {
+                mPackageAR.setTextColor(Color.RED);
+                mPackageAR.setText(mPackage.getApproved().toString());
+            }
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
 

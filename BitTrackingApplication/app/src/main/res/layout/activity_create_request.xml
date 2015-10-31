@@ -124,7 +124,7 @@
 
             <Button
                 android:layout_width="130dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:id="@+id/create_request"
                 android:text="Create Request"
                 android:background="#5a90dd"

@@ -36,8 +36,8 @@
             android:layout_width="260dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:inputType="textEmailAddress"
             android:textAlignment="center"
+            android:inputType="textEmailAddress"
             style="@style/edittext_style"/>
 
         <TextView
@@ -119,7 +119,7 @@
 
         <Button
             android:id="@+id/registerbtn"
-            android:layout_width="148dp"
+            android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="90dp"

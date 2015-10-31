@@ -49,12 +49,10 @@
         <EditText
             android:layout_width="300dp"
             android:layout_height="30dp"
-            android:paddingTop="40dp"
             android:id="@+id/tracking_number"
             android:hint="Input tracking number"
             android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:textAlignment="center"
             style="@style/edittext_style"/>
 
         <Button
