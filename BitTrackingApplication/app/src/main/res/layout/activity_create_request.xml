@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/backgroundpic">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:src="@drawable/logo">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/logo"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="379dp"
+        android:layout_height="78dp"
+        android:text="@string/create_request_textview"
+        android:textSize="25sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Recipient's Name"
+            android:gravity="center"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipient_name"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Recipient's Address"
+            android:gravity="center"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipient_address"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Package weight"
+            android:gravity="center"
+            android:textAlignment="center"/>
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_weight"
+            android:gravity="center"/>
+
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_via"
+            android:hint=" Package Weight"
+            android:gravity="center"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dropdown"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+        <Spinner
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/package_type"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_request"
+            android:text="Create Request"
+            android:background="#5a90dd"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+</LinearLayout>

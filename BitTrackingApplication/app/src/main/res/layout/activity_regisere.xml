@@ -1,94 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@drawable/map9"
-              tools:context=".RegisterActivity"
-                android:layout_centerInParent="true">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:background="@drawable/backgroundpic"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@+id/imageView1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentStart="true">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/reg_email"
-        android:layout_marginTop="30dp"
-        android:hint="example@mail.com"
-        android:textAlignment="center"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Email address"
+            android:textAlignment="center">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/reg_name"
-        android:hint="Input Name"
-        android:textAlignment="center"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#ffffff"/>
+        </TextView>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/reg_surname"
-        android:hint="Input Surname"
-        android:textAlignment="center"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#ffffff"/>
+        <EditText
+            android:id="@+id/reg_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"/>
 
-    <EditText
-        android:id="@+id/reg_password"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:hint="******"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="First Name"
+            android:textAlignment="center">
 
-    <EditText
-        android:id="@+id/conf_password"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:hint="******"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#ffffff"/>
+        </TextView>
 
-    <Button
-        android:layout_width="500px"
-        android:layout_height="70px"
-        android:id="@+id/registerbtn"
-        android:layout_gravity="center"
-        android:textColor="#ffffff"
-        android:textAlignment="center"
-        android:text="Sign up"
-        android:background="@drawable/button_bg_stroke"
-        android:layout_marginTop="10dp"/>
-</LinearLayout>
+        <EditText
+            android:id="@+id/reg_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Last Name"
+            android:textAlignment="center">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/reg_surname"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Password"
+            android:textAlignment="center">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/reg_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="textPassword"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Confirm password"
+            android:textAlignment="center">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/conf_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="textPassword"
+            android:textAlignment="center"/>
+
+
+        <Button
+            android:id="@+id/registerbtn"
+            android:layout_width="148dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:background="#5a90dd"
+            android:text="Sign up"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:src="@drawable/logo"
-        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/logo"/>
 
 
 </RelativeLayout>
