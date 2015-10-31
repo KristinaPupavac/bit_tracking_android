@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="100dp"
               android:background="@drawable/gray1"
               android:orientation="vertical"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
               android:paddingTop="30dp">
 
     <LinearLayout
@@ -15,33 +15,30 @@
 
         <TextView
             android:id="@+id/package_approved_rejected"
-            android:layout_width="120dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Package approved/rejected"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
-            android:textStyle="bold"/>
+            android:textStyle="italic"/>
 
-        <TextView
-            android:id="@+id/package_id"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Time"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/package_status"
-            android:layout_width="120dp"
+            android:layout_width="140dp"
             android:layout_height="67dp"
             android:gravity="center"
             android:hint="Package status"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
-            android:textStyle="bold"/>
+            android:textStyle="italic"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mypackage"
+            android:id="@+id/package_list_info_btn"/>
 
     </LinearLayout>
 
