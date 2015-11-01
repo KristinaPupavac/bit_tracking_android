@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,7 +102,7 @@ public class UserPackagesActivity extends AppCompatActivity {
         public TextView mPackageAR;
         public TextView mPackageStatus;
         public Package mPackage;
-        public Button mInfo;
+        public ImageButton mInfo;
 
 
         public PackageHolder(View itemView) {
@@ -109,7 +110,7 @@ public class UserPackagesActivity extends AppCompatActivity {
 
             mPackageAR = (TextView) itemView.findViewById(R.id.package_approved_rejected);
             mPackageStatus = (TextView) itemView.findViewById(R.id.package_status);
-            mInfo = (Button) itemView.findViewById(package_list_info_btn);
+            mInfo = (ImageButton) itemView.findViewById(package_list_info_btn);
 
             mInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
