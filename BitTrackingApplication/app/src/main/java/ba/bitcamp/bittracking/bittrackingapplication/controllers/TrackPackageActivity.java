@@ -55,7 +55,7 @@ public class TrackPackageActivity extends AppCompatActivity {
                     for (int i = 0; i < packages.size(); i++) {
                         if (getTrackingNumber.equals(packages.get(i).getTrackingNum())) {
                             t = new TextView(TrackPackageActivity.this);
-                            t.setTextColor(Color.BLACK);
+                            t.setTextColor(Color.YELLOW);
                             mLinearLayout.addView(t);
                             if (!packages.get(i).getStatus().equals("DELIVERED")) {
                                 t.setText("OUT FOR DELIVERY (" + packages.get(i).getTimestamp() + ")");

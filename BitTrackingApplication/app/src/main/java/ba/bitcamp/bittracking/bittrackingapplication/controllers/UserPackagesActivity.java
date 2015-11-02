@@ -130,10 +130,13 @@ public class UserPackagesActivity extends AppCompatActivity {
 
             if (mPackage.getApproved().toString().toLowerCase().equals("approved")){
                 mPackageAR.setTextColor(Color.GREEN);
-                mPackageAR.setText(mPackage.getApproved().toString());
-            } else {
+                mPackageAR.setText(mPackage.getTimestamp().toString());
+            } else if (mPackage.getApproved().toString().toLowerCase().equals("rejected")) {
                 mPackageAR.setTextColor(Color.RED);
-                mPackageAR.setText(mPackage.getApproved().toString());
+                mPackageAR.setText(mPackage.getTimestamp().toString());
+            } else {
+                mPackageAR.setTextColor(Color.YELLOW);
+                mPackageAR.setText(mPackage.getTimestamp().toString());
             }
             mPackageStatus.setText(mPackage.getStatus().toString());
         }
