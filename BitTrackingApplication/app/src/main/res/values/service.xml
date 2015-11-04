@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="service_my_ip">http://10.0.82.146:9000,http://192.168.0.101:9000</string>
-    <string name="service_sign_up">http://10.0.82.146:9000/register</string>
-    <string name="service_sign_in">http://10.0.82.146:9000/check</string>
-    <string name="service_create_request">http://10.0.82.146:9000/user</string>
-    <string name="service_create_request_post">http://10.0.82.146:9000/user/createrequest/nestob</string>
-    <string name="service_get_package_list">http://10.0.82.146:9000/user/getpackagelist</string>
-    <string name="service_get_user_packages">http://10.0.82.146:9000/user/getuserpackages/nesto</string>
+    <string name="service_my_ip">http://bittrackingx.cloudapp.net,http://192.168.0.101:9000</string>
+    <string name="service_sign_up">http://bittrackingx.cloudapp.net/register</string>
+    <string name="service_sign_in">http://bittrackingx.cloudapp.net/check</string>
+    <string name="service_create_request">http://bittrackingx.cloudapp.net/user</string>
+    <string name="service_create_request_post">http://bittrackingx.cloudapp.net/user/createrequest/nestob</string>
+    <string name="service_get_package_list">http://bittrackingx.cloudapp.net/user/getpackagelist</string>
+    <string name="service_get_user_packages">http://bittrackingx.cloudapp.net/user/getuserpackages/nesto</string>
 </resources>
