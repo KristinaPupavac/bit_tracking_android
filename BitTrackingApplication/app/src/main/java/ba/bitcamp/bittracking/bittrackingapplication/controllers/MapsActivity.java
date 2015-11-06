@@ -30,6 +30,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.jar.Manifest;
+import java.util.logging.Logger;
 
 import ba.bitcamp.bittracking.bittrackingapplication.R;
 

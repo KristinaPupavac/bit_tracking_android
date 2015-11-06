@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,21 +51,22 @@ public class TrackPackageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String getTrackingNumber = mTrackingNumber.getText().toString();
-                for (int i = 0; i < packages.size(); i++) {
-                    if (getTrackingNumber.equals(packages.get(i).getTrackingNum())) {
-                        t = new TextView(TrackPackageActivity.this);
-                        t.setTextColor(Color.WHITE);
-                        mLinearLayout.addView(t);
-                        if(!packages.get(i).getStatus().equals("DELIVERED")) {
-                            t.setText("OUT FOR DELIVERY");
-                        }else{
-                            t.setText("DELIVERED");
+
+                    for (int i = 0; i < packages.size(); i++) {
+                        if (getTrackingNumber.equals(packages.get(i).getTrackingNum())) {
+                            t = new TextView(TrackPackageActivity.this);
+                            t.setTextColor(Color.YELLOW);
+                            mLinearLayout.addView(t);
+                            if (!packages.get(i).getStatus().equals("DELIVERED")) {
+                                t.setText("OUT FOR DELIVERY (" + packages.get(i).getTimestamp() + ")");
+                            } else {
+                                t.setText("DELIVERED (" + packages.get(i).getTimestamp()+ ")");
+                            }
+                            break;
+                        } else {
+                            ToastMessage("Tracking number doesn't exist!");
                         }
-                        break;
-                    }else{
-                        ToastMessage("Tracking number doesn't exist!");
                     }
-                }
             }
         });
 

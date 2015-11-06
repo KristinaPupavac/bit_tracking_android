@@ -33,6 +33,8 @@ public class Package {
 
     private String approved = "Waiting For Approval";
 
+    private String timestamp;
+
     public Package (){
 
     }
@@ -121,7 +123,15 @@ public class Package {
         this.status = status;
     }
 
-    public Package(Long id, String recipientName, String recipientAddress, Double weight, String packageType, String trackingNum, String status, String approved) {
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Package(Long id, String recipientName, String recipientAddress, Double weight, String packageType, String trackingNum, String status, String approved, String timestamp, Double price) {
         this.id = id;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
@@ -130,6 +140,8 @@ public class Package {
         this.trackingNum = trackingNum;
         this.status = status;
         this.approved = approved;
+        this.timestamp = timestamp;
+        this.price = price;
     }
 
 

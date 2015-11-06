@@ -62,17 +62,10 @@ public class PackageList {
                         Double weight = obj.getDouble("weight");
                         String packageType = obj.getString("packageType");
                         String status = obj.getString("status");
-                        Boolean approved = obj.getBoolean("approved");
-                        String approvedStatus = "";
-                        if(approved==null){
-                            approvedStatus = "Waiting for approval";
-                        }else if(approved){
-                            approvedStatus = "Approved";
-                        }else if(!approved){
-                            approvedStatus = "Rejected";
-                        }
-
-                        mPackage.add(new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approvedStatus));
+                        String approved = obj.getString("approved");
+                        String timestamp = obj.getString("timestamp");
+                        String price = obj.getString("price");
+                        mPackage.add(new Package(id, recipientName, recipientAddress, weight, packageType, trackingNum, status, approved, timestamp, Double.parseDouble(price)));
 
                     }
                 } catch (JSONException e) {

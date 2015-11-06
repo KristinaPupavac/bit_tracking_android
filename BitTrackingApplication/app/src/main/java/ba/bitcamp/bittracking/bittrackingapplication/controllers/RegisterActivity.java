@@ -84,9 +84,9 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!User.isValidEmail(mail)) {
                     mEmail.setError("Invalid Email");
                 } else if (!User.checkName(name)) {
-                    mName.setError("Your name should have only letters.");
+                    mName.setError("Your first name should have only letters.");
                 } else if (!User.checkName(surname)) {
-                    mSurname.setError("Your surname should have only letters.");
+                    mSurname.setError("Your last name should have only letters.");
                 } else if (!User.checkPassword(confPass)) {
                     mConfPassword.setError("Invalid Password");
                 } else if (!User.passConf(password, confPass)) {
