@@ -156,7 +156,7 @@
         android:textSize="20sp"
         android:layout_below="@+id/header"
         android:layout_centerHorizontal="true"
-        android:textColor="#4682b4"
+        android:textColor="#0A2B73"
         android:textStyle="bold"
         android:id="@+id/textView3"/>
 

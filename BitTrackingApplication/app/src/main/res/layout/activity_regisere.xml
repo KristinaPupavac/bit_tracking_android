@@ -23,7 +23,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Complete the form below to register for BIT Tracking account."
-            android:textColor="#4682b4"
+            android:textColor="#0A2B73"
             android:textAlignment="center">
 
         </TextView>

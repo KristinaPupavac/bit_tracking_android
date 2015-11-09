@@ -38,7 +38,7 @@
                 android:paddingTop="25dp"
                 android:textSize="23sp"
                 android:paddingLeft="20dp"
-                android:textColor="#4682b4"
+                android:textColor="#0A2B73"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="400dp"
