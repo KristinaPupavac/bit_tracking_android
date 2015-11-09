@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gray1"
     android:layout_centerInParent="true"
     android:padding="10dp"
     >
@@ -18,12 +17,12 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
-
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,20 +36,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="You need to input package tracking number to check your package status."
+            android:text="Please enter Your package tracking number to check package status."
             android:id="@+id/textView2"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            android:textColor="#606060"
             android:layout_below="@+id/textView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:padding="5dp"/>
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="30dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
             android:id="@+id/tracking_number"
-            android:hint="Input tracking number"
+            android:hint="Enter tracking number"
             android:layout_below="@+id/textView2"
             android:textAlignment="center"
             style="@style/edittext_style"/>
@@ -61,13 +59,14 @@
             android:layout_gravity="center_horizontal"
             android:text="OK"
             android:id="@+id/ok_button"
-            android:background="#5a90dd"
             android:layout_below="@+id/tracking_number"
             android:layout_alignLeft="@+id/textView"
             android:layout_alignStart="@+id/textView"
             android:layout_above="@+id/linearLayout"
             android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView"/>
+            android:layout_alignEnd="@+id/textView"
+            style="@style/DefaultButtonText"
+            android:background="@drawable/button_default_bg"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -86,14 +85,17 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="183dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Welcome to BitTracking!"
+        android:text="@string/welcome"
+        android:textSize="20sp"
+        android:textAlignment="center"
         android:id="@+id/textView"
-        android:textColor="#ffffff"
+        android:textColor="#4682b4"
         android:textStyle="bold"
         android:layout_below="@+id/header"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
 
 </RelativeLayout>

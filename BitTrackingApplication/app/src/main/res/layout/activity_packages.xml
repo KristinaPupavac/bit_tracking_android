@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="100dp"
-              android:background="@drawable/gray1"
               android:orientation="vertical"
               android:paddingLeft="10dp"
               android:paddingRight="10dp"
@@ -19,9 +18,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Package approved/rejected"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="italic"/>
+            android:textColor="#001933"
+            android:textColorHint="#202020"
+            android:textStyle="bold"/>
 
 
         <TextView
@@ -30,9 +29,9 @@
             android:layout_height="67dp"
             android:gravity="center"
             android:hint="Package status"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textStyle="italic"/>
+            android:textColor="#001933"
+            android:textColorHint="#202020"
+            android:textStyle="bold"/>
 
         <ImageButton
             android:layout_width="wrap_content"

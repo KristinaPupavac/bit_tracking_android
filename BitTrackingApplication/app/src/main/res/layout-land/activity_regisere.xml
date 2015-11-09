@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    android:background="@drawable/plain"
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
@@ -22,13 +21,15 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
             <TextView
                 android:layout_width="135dp"
                 android:layout_height="30dp"
                 android:gravity="left"
                 android:text="Email address"
-                android:textColor="#000000"
+                android:textColor="#606060"
                 android:textStyle="bold"
                 android:textAlignment="center">
 
@@ -55,7 +56,7 @@
             android:gravity="center"
             android:text="First Name"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#606060"
             android:textStyle="bold">
 
         </TextView>
@@ -80,7 +81,7 @@
             android:gravity="center"
             android:text="Last Name"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#606060"
             android:textStyle="bold">
 
         </TextView>
@@ -105,7 +106,7 @@
             android:gravity="center"
             android:text="Password"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#606060"
             android:textStyle="bold">
 
         </TextView>
@@ -131,7 +132,7 @@
             android:gravity="center"
             android:text="Confirm password"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#606060"
             android:textStyle="bold">
 
         </TextView>
@@ -145,6 +146,7 @@
             android:inputType="textPassword"
             style="@style/edittext_style"/>
         </LinearLayout>
+        <requestFocus></requestFocus>
 
 
         <Button
@@ -152,17 +154,19 @@
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="#5a90dd"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="160dp"
             android:text="Sign up"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            style="@style/DefaultButtonText"
+            android:background="@drawable/button_default_bg"/>
     </LinearLayout>
 
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"

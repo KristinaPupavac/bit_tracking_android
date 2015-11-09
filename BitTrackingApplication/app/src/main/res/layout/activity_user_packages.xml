@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gray1"
     android:gravity="top"
     android:orientation="vertical"
     android:weightSum="1">
@@ -18,7 +17,7 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:src="@drawable/logo"/>
@@ -29,7 +28,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/textView9"
@@ -42,8 +42,8 @@
             android:text="My Packages"
             android:textSize="22dp"
             android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:layout_marginBottom="5dp"/>
+            android:textColor="#4682b4"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:gravity="center"
             android:text="TIMESTAMP"
             android:textStyle="bold"
-            android:textColor="#ffffff"/>
+            android:textColor="#606060"/>
 
         <TextView
             android:layout_width="150dp"
@@ -69,7 +69,7 @@
             android:gravity="center"
             android:text="STATUS"
             android:textStyle="bold"
-            android:textColor="#ffffff"/>
+            android:textColor="#606060"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
             android:gravity="center"
             android:text="INFO"
             android:textStyle="bold"
-            android:textColor="#ffffff"/>
+            android:textColor="#606060"/>
 
     </LinearLayout>
 

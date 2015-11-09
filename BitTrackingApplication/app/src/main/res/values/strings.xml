@@ -18,5 +18,9 @@
     <string name="sign_out_button">Sign Out</string>
     <string name="key_user_email">ba.bitcamp.bittracking.user_email</string>
     <string name="key_user_password">ba.bitcamp.bittracking.user_password</string>
-    <string name="create_request_textview">Create New Request</string>
+    <string name="create_request_textview">Create A New Request</string>
+    <string name="welcome">Welcome to BIT Tracking application!</string>
+    <string name="fillfrom">Please sign in or create BIT Tracking account</string>
+
+
 </resources>

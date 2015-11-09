@@ -3,8 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@drawable/gray1">
+    android:gravity="center">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -17,7 +16,7 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:src="@drawable/logo"/>
@@ -30,12 +29,13 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:layout_width="379dp"
                 android:layout_height="40dp"
-                android:textColor="#ffffff"
+                android:textColor="#4682b4"
                 android:textStyle="bold"
                 android:text="@string/create_request_textview"
                 android:textSize="20sp"
@@ -51,7 +51,7 @@
                     android:layout_width="135dp"
                     android:layout_height="30dp"
                     android:text="Recipient's Name"
-                    android:textColor="#ffffff"
+                    android:textColor="#606060"
                     android:textStyle="bold"
                     android:gravity="left"
                     android:layout_marginLeft="5dp"/>
@@ -72,7 +72,7 @@
                         android:layout_width="135dp"
                         android:layout_height="30dp"
                         android:text="Recipient's Address"
-                        android:textColor="#ffffff"
+                        android:textColor="#606060"
                         android:textStyle="bold"
                         android:layout_marginLeft="5dp"
                         android:gravity="left"/>
@@ -95,7 +95,7 @@
                     android:layout_width="135dp"
                     android:layout_height="30dp"
                     android:text="Package weight"
-                    android:textColor="#ffffff"
+                    android:textColor="#606060"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
                     android:gravity="left"/>
@@ -117,7 +117,7 @@
                     android:layout_width="135dp"
                     android:layout_height="30dp"
                     android:text="Post Office"
-                    android:textColor="#ffffff"
+                    android:textColor="#606060"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
                     android:gravity="left"/>
@@ -130,8 +130,8 @@
                     android:gravity="center"
                     android:drawSelectorOnTop="true"
                     android:spinnerMode="dropdown"
-                    android:textColorHint="#FFFFFF"
-                    android:textColor="#ffffff"
+                    android:textColorHint="#cccccc"
+                    android:textColor="#606060"
                     android:padding="5dp"
                     style="@style/edittext_style"/>
             </LinearLayout>
@@ -145,7 +145,7 @@
                     android:layout_width="135dp"
                     android:layout_height="30dp"
                     android:text="Package type"
-                    android:textColor="#ffffff"
+                    android:textColor="#606060"
                     android:textStyle="bold"
                     android:layout_marginLeft="5dp"
                     android:gravity="left"/>
@@ -155,8 +155,8 @@
                     android:id="@+id/package_type"
                     android:gravity="center"
                     android:spinnerMode="dropdown"
-                    android:textColorHint="#FFFFFF"
-                    android:textColor="#ffffff"
+                    android:textColorHint="#cccccc"
+                    android:textColor="#606060"
                     android:padding="5dp"
                     style="@style/edittext_style"/>
 
@@ -167,9 +167,13 @@
                 android:layout_height="25dp"
                 android:id="@+id/create_request"
                 android:text="Create Request"
-                android:background="#5a90dd"
+                android:textColor="@color/common_signin_btn_text_light"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="120dp"
+
+                style="@style/DefaultButtonText"
+                android:background="@drawable/button_default_bg"/>
 
 
         </LinearLayout>

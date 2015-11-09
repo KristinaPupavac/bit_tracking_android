@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gray1"
     android:weightSum="1">
 
     <RelativeLayout
@@ -17,7 +16,7 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:src="@drawable/logo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
@@ -33,11 +32,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Package info"
-            android:paddingBottom="20dp"
-            android:textSize="20sp"
+            android:text="Package information"
+            android:paddingBottom="25dp"
+            android:textSize="23sp"
             android:paddingLeft="20dp"
-            android:textColor="#ffffff"
+            android:textColor="#4682b4"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="400dp"
@@ -46,18 +45,19 @@
             android:gravity="center"
             android:text="Tracking Number"
             android:padding="5dp"
-            android:textColor="#ffffff"
+            android:textColor="#2f4f4f"
+            android:textSize="18sp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:id="@+id/package_tracking_number"
             android:gravity="center"
-            android:hint="tracking number"
-            android:paddingBottom="20dp"
-            android:textColor="#ffffff"
+            android:hint="Enter your tracking number"
+            android:paddingBottom="35dp"
+            android:textColor="#003366"
             android:textStyle="italic"
-            android:textColorHint="#ffffff"/>
+            android:textColorHint="#AAADB3"/>
 
         <!--Recipient name   -->
         <LinearLayout
@@ -71,7 +71,7 @@
                 android:gravity="left"
                 android:text="Recipient Name"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -80,9 +80,9 @@
                 android:gravity="left"
                 android:hint="recipient name"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
 
         </LinearLayout>
 
@@ -98,7 +98,7 @@
                 android:gravity="left"
                 android:text="Recipient Address"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -107,9 +107,9 @@
                 android:gravity="left"
                 android:hint="recipient address"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
         <!--Package weight-->
         <LinearLayout
@@ -123,7 +123,7 @@
                 android:gravity="left"
                 android:text="Weight (Kg)"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -132,9 +132,9 @@
                 android:gravity="left"
                 android:hint="weight"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
         <!--Package price-->
         <LinearLayout
@@ -148,7 +148,7 @@
                 android:gravity="left"
                 android:text="Price (KM)"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -157,9 +157,9 @@
                 android:gravity="left"
                 android:hint="price"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
         <!--Package approved rejected -->
         <LinearLayout
@@ -173,7 +173,7 @@
                 android:gravity="left"
                 android:text="Approved/Rejected"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -182,9 +182,9 @@
                 android:gravity="left"
                 android:hint="approved rejected"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
         <!--Package status-->
         <LinearLayout
@@ -198,7 +198,7 @@
                 android:gravity="left"
                 android:text="Status"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -207,9 +207,9 @@
                 android:gravity="left"
                 android:hint="status"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
         <!--Package time-->
         <LinearLayout
@@ -223,7 +223,7 @@
                 android:gravity="left"
                 android:text="Time"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#2f4f4f"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="200dp"
@@ -232,9 +232,9 @@
                 android:gravity="left"
                 android:hint="time"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#003366"
                 android:textStyle="italic"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#AAADB3"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

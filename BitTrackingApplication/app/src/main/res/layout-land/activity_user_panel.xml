@@ -5,8 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="ba.bitcamp.bittracking.bittrackingapplication.controllers.UserPanelActivity"
-    android:background="@drawable/gray1">
+    tools:context="ba.bitcamp.bittracking.bittrackingapplication.controllers.UserPanelActivity">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -19,7 +18,7 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:src="@drawable/logo"/>
@@ -54,7 +53,7 @@
                 android:textSize="15dp"
                 android:id="@+id/textView4"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +61,7 @@
                 android:text="Last Name:"
                 android:textSize="15dp"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -70,7 +69,7 @@
                 android:text="Email:"
                 android:textSize="15dp"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -83,31 +82,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#cccccc"
                 android:id="@+id/user_name"
                 android:textSize="14dp"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="italic"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Surname"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#cccccc"
                 android:id="@+id/user_surname"
                 android:textSize="14dp"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="italic"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#cccccc"
                 android:id="@+id/user_email"
                 android:textSize="14dp"
                 android:padding="5dp"
-                android:textColor="#ffffff"
+                android:textColor="#606060"
                 android:textStyle="italic"/>
 
         </LinearLayout>
@@ -152,11 +151,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to BitTracking!"
+        android:text="@string/welcome"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:layout_below="@+id/header"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
+        android:textColor="#4682b4"
         android:textStyle="bold"
         android:id="@+id/textView3"/>
 
@@ -168,8 +168,8 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:layout_width="65dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:drawableTop="@drawable/location"
             android:id="@+id/location_user"
             android:layout_alignParentTop="true"
@@ -180,8 +180,8 @@
             android:textStyle="bold"/>
 
         <Button
-            android:layout_width="65dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:drawableTop="@drawable/tracking"
             android:id="@+id/info_user"
             android:layout_alignParentTop="true"
@@ -192,8 +192,8 @@
             android:textStyle="bold"/>
 
         <Button
-            android:layout_width="65dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:drawableTop="@drawable/sign_out"
             android:id="@+id/sign_out_button"
             android:layout_alignParentTop="true"
@@ -204,8 +204,8 @@
             android:textStyle="bold"/>
 
         <Button
-            android:layout_width="65dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:drawableTop="@drawable/facebook"
             android:id="@+id/facebook_button_user"
             android:layout_alignParentTop="true"
@@ -216,8 +216,8 @@
             android:textStyle="bold"/>
 
         <Button
-            android:layout_width="65dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:drawableTop="@drawable/twitter"
             android:id="@+id/twitter_button_user"
             android:layout_alignParentTop="true"
