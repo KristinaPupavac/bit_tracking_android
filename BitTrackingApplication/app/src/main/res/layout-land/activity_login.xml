@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_centerInParent="true"
     android:padding="10dp"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/back">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:textColor="#0A2B73"/>
         <TextView
             android:layout_width="wrap_content"
@@ -85,18 +86,27 @@
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
 
-        <Button
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:id="@+id/register"
-            android:textAlignment="center"
-            android:text="Sign up"
-            style="@style/DefaultButtonText"
-            android:background="@drawable/button_default_bg"
-            android:layout_below="@+id/linearLayout"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="If you do not have an account, please "
+            android:autoLink="all"
+            android:textColor="#0A2B73"
+            android:layout_marginTop="5dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerlink"
+            android:clickable="true"
+            android:text="@string/link"
+            android:autoLink="all"
+            android:textColor="@color/wallet_holo_blue_light">
+
+        </TextView>
 
     </LinearLayout>
 
@@ -108,8 +118,8 @@
         android:layout_alignParentBottom="true"
         android:gravity="center" >
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/facebook"
             android:id="@+id/facebook_button"
             android:layout_alignParentTop="true"
@@ -118,8 +128,8 @@
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/twitter"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/page"
@@ -128,8 +138,8 @@
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/mail"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
@@ -138,8 +148,8 @@
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/location"
             android:id="@+id/location"
             android:layout_alignParentTop="true"
@@ -148,8 +158,8 @@
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/tracking"
             android:id="@+id/info"
             android:layout_alignParentTop="true"
@@ -157,8 +167,5 @@
             android:layout_toStartOf="@+id/facebook_button"
             style="@style/DefaultButtonText"
             android:background="@drawable/button_default_bg"/>
-
     </RelativeLayout>
-
-
 </RelativeLayout>

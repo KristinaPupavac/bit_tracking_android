@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.Callback;
@@ -22,6 +23,7 @@ import com.squareup.okhttp.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +49,7 @@ public class BitTrackingActivity extends AppCompatActivity {
     private ImageButton mFacebook;
     private ImageButton mTwitter;
     private ImageButton mPage;
+    private TextView mlinkregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,6 @@ public class BitTrackingActivity extends AppCompatActivity {
         }
 
         mLoginButton = (Button) findViewById(R.id.loginbtn);
-        mRegister = (Button) findViewById(R.id.register);
         mMail = (EditText) findViewById(R.id.email);
         mPassword = (EditText) findViewById(R.id.password);
         mTrackPackageButton = (ImageButton) findViewById(R.id.info);
@@ -109,13 +111,6 @@ public class BitTrackingActivity extends AppCompatActivity {
             }
         });
 
-        mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
-            }
-        });
 
         mTrackPackageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +144,20 @@ public class BitTrackingActivity extends AppCompatActivity {
                 Intent intent = new Intent("android.intent.action.VIEW", Uri.parse("https://twitter.com/BitTracking"));
                 startActivity(intent);
 
+            }
+        });
+
+        mlinkregister = (TextView)findViewById(R.id.registerlink);
+        mlinkregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BitTrackingActivity.this, RegisterActivity.class));
+                mlinkregister.setText("Register for BIT Tracking account");
+
+                if(mlinkregister.getLinksClickable()== true){
+                    mlinkregister.setLinkTextColor(Color.BLUE);
+                }
             }
         });
 

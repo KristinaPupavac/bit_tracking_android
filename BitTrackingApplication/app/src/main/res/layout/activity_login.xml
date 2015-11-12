@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_centerInParent="true"
     android:padding="10dp"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/back">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="wrap_content"
@@ -81,21 +82,35 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:id="@+id/loginbtn"
+            android:padding="10dp"
             android:layout_margin="4dp"
             android:text="Sign In"
             style="@style/DefaultButtonText"
-            android:background="@drawable/button_default_bg"/>
+            android:background="@drawable/button_default_bg"
+            />
 
-        <Button
+
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:id="@+id/register"
-            android:text="Sign Up"
-            android:layout_alignRight="@+id/loginbtn"
-            android:layout_alignLeft="@+id/loginbtn"
-            android:layout_marginBottom="25dp"
-            style="@style/DefaultButtonText"
-            android:background="@drawable/button_default_bg"/>
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="If you do not have an account, please "
+            android:autoLink="all"
+            android:textColor="#0A2B73"
+            android:layout_marginTop="30dp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerlink"
+            android:clickable="true"
+            android:text="@string/link"
+            android:autoLink="all"
+            android:textColor="@color/wallet_holo_blue_light">
+
+        </TextView>
 
 
     </LinearLayout>
